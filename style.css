@@ -1,0 +1,155 @@
+body {
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  margin: 0;
+  padding: 0;
+  line-height: 1.6;
+  background-color: rgb(255, 255, 255);
+
+}
+header {
+  background-image: url('img/media/hero.jpeg');
+  background-size: cover;        
+  background-position: center 30%;
+  color: #fff;
+  text-align: center;
+  display: flex;                  
+  flex-direction: column;         
+  justify-content: center;        
+  align-items: center;            
+  height: 100vh;    
+ 
+}
+header::before {
+  content: "";
+  position: absolute;
+  inset: 0; 
+  background: rgba(0,0,0,0.5); 
+  z-index: 0;
+  height: 100vh;
+}
+
+header h1, 
+header p {
+  position: relative;
+  z-index: 1; 
+  font-size: 1.05rem;
+  font-weight: bold;
+}
+
+main {
+  position: relative;
+  overflow: hidden;
+  padding: 0rem 2rem;
+}
+footer {
+  text-align: center;
+  padding: 1rem;
+}
+.about {
+  margin-bottom: rem;
+  text-align: center;
+  z-index: 1;
+}
+.about h2 {
+  font-size: 3rem;
+  color: rgb(1, 1, 65);
+}
+.about-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  
+}
+.about-card {
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  height: 96vh;
+}
+.about-card img {
+  display: block;
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  object-position: center;
+
+}
+.about-card img:hover {
+  transform: scale(1.05);
+  transition: transform 0.5s ease;
+}
+.about-card .about-texto {
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+
+  background-color: rgba(0,0,0,0.3);
+}
+.about-card .about-texto h3 {
+  margin: 0 1rem 0.5rem 0;
+  font-size: 1.2rem;
+  color: white;
+  text-align: right;
+  text-shadow: 0 2px 5px rgba(0,0,0,0.7);
+}
+
+.about-card .about-texto p {
+  margin: 0 1rem 0.5rem 0;
+  font-size: 0.8rem;
+  color: white;
+  text-align: right;
+  text-shadow: 0 2px 5px rgba(0,0,0,0.7);
+}
+a {
+  color: rgb(2, 2, 53);
+  text-decoration: none;
+}
+
+.services {
+  padding: 2rem;
+  margin-bottom: 1rem;
+  z-index: 1;
+  
+}
+.services h2 {
+  text-align: left;
+  font-size: 3rem;
+  color: rgb(4, 4, 51);
+  margin-bottom: 2rem;
+}
+
+.services-container{
+  
+  display: flex;
+  gap: 1rem;
+
+}
+
+.services-card h3 {
+  margin: 0;
+  font-size: 1.2rem;
+}
+
+
+
+.companies {
+  z-index: 1;
+}
+
+.companies h3 {
+  font-size: 1.5rem;
+  color: rgb(1, 1, 65);
+  margin-top: 2rem;
+}
+.companies-container {
+  display: flex;
+  flex-direction: column;
+}
+.companies-container img {
+  width: 100%;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  margin-bottom: 1rem;
+}
