@@ -8,14 +8,34 @@
 </head>
 <body>
   <header>
-    <h1><img src="img/logos/" alt=""></h1>
+    <video autoplay muted loop id="hero-video">
+      <source src="img/media/herovid.mov" type="video/mp4">
+      Tu navegador no soporta la reproducción de videos.
+    </video>
     <p>Entrena con propósito.<br> Conecta con tu equipo.<br> Proyecta tus valores.</p>
-  </header>
+    <button class="btn" type="button" data-open-modal>Contáctanos</button>
+</header>
+
+<div id="contact-modal" class="modal" aria-hidden="true" role="dialog" aria-modal="true">
+  <div class="modal-content">
+    <button class="close" type="button" aria-label="Cerrar" data-close-modal>×</button>
+    <h2>Contacto</h2>
+    <form action="https://formsubmit.co/info@aurawellnessports.com" method="POST">
+  <input type="text" name="nombre" placeholder="Tu nombre" required>
+  <input type="email" name="email" placeholder="Tu correo" required>
+  <textarea name="mensaje" placeholder="Tu mensaje" required></textarea>
+
+  <input type="hidden" name="_subject" value="Nuevo mensaje desde la web Aura Wellness Sports">
+  <input type="hidden" name="_next" value="https://imsauco.github.io/aurawellness/"> 
+  
+  <button type="submit">Enviar</button>
+</form>
+  </div>
+</div>
   <main>
       <section class="about" id="about">
         <h2>QUIÉNES SOMOS</h2>
         <div class="about-container">
-          
           <div class="about-card">
               <img src="img/media/Rafa_Samu.jpeg" alt="Samu y Rafa">
                   <div class = "about-texto">
@@ -38,21 +58,24 @@
       </section>
       <section class="companies" id="companies">
         <div class="companies-container">
-          <img src="img/media/carrera_empresas.jpg" alt="Empresas">
-          <h3>PROYECTO SALUD Y BIENESTAR</h3>
-          <p>Un entrenador no solo prepara el cuerpo, también impulsa la motivación, previene lesiones y mejora el compromiso del equipo.</p>
-          <p>¿POR QUÉ ENTRENAR CON TU EMPRESA? <ul><li>Mejora del clima laboral.</li><li>Fomento de hábitos saludables.</li><li>Fortalecimiento del equipo.</li><li>Visibilidad y marca positiva.</li><li>Sentimiento de pertenencia.</li><li>Diversión y superación.</li></ul>BENEFICIOS PARA LA EMPRESA. <ul><li>Fortalece los valores.</li><li>Aumenta el engagement.</li><li>Refuerza la marca empleadora.</li><li>Contenido de alto impacto para la comunicación.</li><li>Disminuye la rotación de empleados.</li></ul>LO QUE OFRECEMOS<br><br> 1. Entrenamientos grupales en la empresa <ul><li>Sesiones adaptadas</li><li>Motivación en equipo</li></ul> 2. Entrenamiento online para empleados <ul><li>App de seguimiento con Trainerplan</li><li>Planes personalizados</li><li>Acceso desde cualquier lugar</li></ul> 3. Organización del evento <ul><li>Inscripciones, entrega de dorsales, equipación y logística</li><li>Calentamiento y acompañamiento en carrera</li><li>Espacio privado</li><li>Fotografía y acompañamiento</li><li>Post carrera</li></ul></p>
+          <div class="companies-img">
+            <img src="img/media/carrera_empresas.jpg" alt="Empresas">
+          </div>
+          <div class = "companies-text">
+            <h3>PROYECTO SALUD Y BIENESTAR</h3>
+            <p>Un entrenador no solo prepara el cuerpo, también impulsa la motivación, previene lesiones y mejora el compromiso del equipo.</p>
+            <p>¿POR QUÉ ENTRENAR CON TU EMPRESA? <ul><li>Mejora del clima laboral.</li><li>Fomento de hábitos saludables.</li><li>Fortalecimiento del equipo.</li><li>Visibilidad y marca positiva.</li><li>Sentimiento de pertenencia.</li><li>Diversión y superación.</li></ul>BENEFICIOS PARA LA EMPRESA. <ul><li>Fortalece los valores.</li><li>Aumenta el engagement.</li><li>Refuerza la marca empleadora.</li><li>Contenido de alto impacto para la comunicación.</li><li>Disminuye la rotación de empleados.</li></ul>LO QUE OFRECEMOS<br><br> 1. Entrenamientos grupales en la empresa <ul><li>Sesiones adaptadas</li><li>Motivación en equipo</li></ul> 2. Entrenamiento online para empleados <ul><li>App de seguimiento con Trainerplan</li><li>Planes personalizados</li><li>Acceso desde cualquier lugar</li></ul> 3. Organización del evento <ul><li>Inscripciones, entrega de dorsales, equipación y logística</li><li>Calentamiento y acompañamiento en carrera</li><li>Espacio privado</li><li>Fotografía y acompañamiento</li><li>Post carrera</li></ul></p>
+          <h4>Pide tu presupuesto</h4>
+          Si deseas obtener tu presupuesto personalizado, no dubes en contactarnos:
+          <section class="contact" id="contact">
+            <ul>
+              <li>619196682 / 69646701</li>
+              <li><a href="mailto:info@aurawellnessports.com"><button>Email</button></a></li>
+            </ul>
+          </section>
         </div>
-        <h4>Pide tu presupuesto</h4>
-        Si deseas obtener tu presupuesto personalizado, no dubes en contactarnos:
-        <section class="contact" id="contact">
-          <ul>
-            <li>619196682 / 69646701</li>
-            <li><a href="mailto:info@aurawellnesssports.com"><button>Email</button></a></li>
-          </ul>
+        </div>
         </section>
-      </div>
-      </section>
       <section class="scroll">
         <h2>Otros servicios disponibles</h2>
         <div class="scroll-container">
@@ -78,5 +101,24 @@
   <footer>
     <p>© 2025 Aura Wellness Sports</p>
   </footer>
+
+
+  <script>
+(() => {
+  const modal = document.getElementById('contact-modal');
+  const openBtns = document.querySelectorAll('[data-open-modal]');
+  const closeBtns = document.querySelectorAll('[data-close-modal]');
+
+  function open(){ modal.classList.add('open'); document.body.classList.add('modal-open'); }
+  function close(){ modal.classList.remove('open'); document.body.classList.remove('modal-open'); }
+
+  openBtns.forEach(b => b.addEventListener('click', e => { e.preventDefault(); open(); }));
+  closeBtns.forEach(b => b.addEventListener('click', close));
+  modal.addEventListener('click', e => { if (e.target === modal) close(); });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape' && modal.classList.contains('open')) close(); });
+})();
+</script>
+
+
 </body>
 </html>
