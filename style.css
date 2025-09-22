@@ -1,58 +1,104 @@
+html {
+  scroll-behavior: smooth;
+}
 body {
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   margin: 0;
   padding: 0;
   line-height: 1.6;
-  background-color: rgb(255, 255, 255);
+  background-color: rgb(255, 246, 227);
 
 }
 header {
-  background-image: url('img/media/hero.jpeg');
+  position: relative;              
   background-size: cover;        
   background-position: center 30%;
-  color: #fff;
-  text-align: center;
+  color: rgb(255, 246, 227);
+  text-align: left;
   display: flex;                  
   flex-direction: column;         
   justify-content: center;        
-  align-items: center;            
+  align-items: flex-start;        
   height: 100vh;    
- 
+  overflow: hidden;               
 }
+
+header video {
+  position: absolute;              
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;               
+  z-index: -1;                     
+}
+
 header::before {
   content: "";
   position: absolute;
   inset: 0; 
-  background: rgba(0,0,0,0.5); 
-  z-index: 0;
-  height: 100vh;
+  background: rgba(0,0,0,0.5);     
+  z-index: 0;                      
 }
-
 header h1, 
 header p {
   position: relative;
   z-index: 1; 
-  font-size: 1.05rem;
+  font-size: 2.5rem;
   font-weight: bold;
+  padding: 0 2rem;
 }
+header button {
+  position: relative;
+  z-index: 1; 
+  background: rgb(1, 1, 50);
+  color: #fff;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  border-radius: 25px;
+  cursor: pointer;
+  margin: 1rem 2rem;}
+header button:hover {
+  background: rgb(0, 0, 30);}
 
+.modal{
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.6);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+  z-index: 1000;
+}
+.modal.open{                  
+  display: flex;
+}
+.modal-content{
+  background:#fff;
+  border-radius:12px;
+  max-width: 420px;
+  width: 100%;
+  padding: 1.5rem;
+  position: relative;
+}
+.close{
+  position:absolute; top:.5rem; right:.75rem; font-size:1.25rem; cursor:pointer;
+}
+body.modal-open{ overflow:hidden; }
 main {
   position: relative;
   overflow: hidden;
-  padding: 0rem 2rem;
-}
-footer {
-  text-align: center;
-  padding: 1rem;
 }
 .about {
-  margin-bottom: rem;
-  text-align: center;
+  text-align: left;
   z-index: 1;
+  padding: 2rem;
 }
 .about h2 {
   font-size: 3rem;
-  color: rgb(1, 1, 65);
+  color: rgb(1, 1, 50);
 }
 .about-container {
   display: flex;
@@ -75,16 +121,11 @@ footer {
   object-position: center;
 
 }
-.about-card img:hover {
-  transform: scale(1.05);
-  transition: transform 0.5s ease;
-}
 .about-card .about-texto {
   position: absolute;
   bottom: 0px;
   left: 0px;
   right: 0px;
-
   background-color: rgba(0,0,0,0.3);
 }
 .about-card .about-texto h3 {
@@ -103,7 +144,7 @@ footer {
   text-shadow: 0 2px 5px rgba(0,0,0,0.7);
 }
 a {
-  color: rgb(2, 2, 53);
+  color: rgb(1, 1, 50);
   text-decoration: none;
 }
 
@@ -111,12 +152,11 @@ a {
   padding: 2rem;
   margin-bottom: 1rem;
   z-index: 1;
-  
 }
 .services h2 {
   text-align: left;
   font-size: 3rem;
-  color: rgb(4, 4, 51);
+  color: rgb(1, 1, 50);
   margin-bottom: 2rem;
 }
 
@@ -131,25 +171,95 @@ a {
   margin: 0;
   font-size: 1.2rem;
 }
-
-
-
 .companies {
   z-index: 1;
 }
-
+.companies-text {
+  background-color:  rgb(1, 1, 50);
+  color: rgb(255, 246, 227);
+  padding: 0 2rem;
+} 
 .companies h3 {
   font-size: 1.5rem;
-  color: rgb(1, 1, 65);
-  margin-top: 2rem;
+  color: rgb(255, 246, 227);
+  
 }
 .companies-container {
   display: flex;
   flex-direction: column;
 }
-.companies-container img {
+.companies-img {
+  padding:0 2rem;
+}
+.companies-img img {
   width: 100%;
   border-radius: 12px;
   box-shadow: 0 4px 8px rgba(0,0,0,0.2);
   margin-bottom: 1rem;
+}
+
+:root { --gap: 1rem; }
+.scroll { padding: 2rem 1rem; width:100vw; margin: 0 auto; }
+.scroll h2 {
+  text-align: left;
+  font-size: 3rem;
+  color: rgb(1, 1, 50);
+  margin-bottom: 2rem;
+}
+
+.scroll-container {
+  display:flex;
+  gap: var(--gap);
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  padding: 0 1rem;
+  width: 80vw;
+  height: 100vh;
+  flex-wrap: nowrap;
+}
+.scroll-card {
+  flex: 0 0 100%;
+  width: 80vw;
+  height: 90vh;
+  position: relative; 
+  overflow: hidden;
+  scroll-snap-align: start;
+ 
+}
+.scroll-card img {
+  width: 100%; 
+  height: 100%;   
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  border-radius: 12px;    
+  margin: 0; 
+}
+.scroll-card .scroll-texto {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 1.5rem;
+  background-color: rgba(0,0,0,0.3); 
+  box-sizing: border-box;   
+  border-radius: 0 0 12px 12px;        
+}
+.scroll-card .scroll-texto h3,
+.scroll-card .scroll-texto p {
+  margin: 0;                        
+  text-align: right;
+  color: white;
+  text-shadow: 0 2px 5px rgba(0,0,0,0.7);
+}
+
+footer {
+  text-align: center;
+  padding: 1rem;
+}
+footer p {
+  margin: 0;
+  font-size: 0.9rem;
+  color: rgb(1, 1, 50);
 }
