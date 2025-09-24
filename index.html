@@ -21,15 +21,15 @@
     <button class="close" type="button" aria-label="Cerrar" data-close-modal>×</button>
     <h2>Contacto</h2>
     <form action="https://formsubmit.co/jaime.atleta@hotmail.com" method="POST">
-  <input type="text" name="nombre" placeholder="Tu nombre" required>
-  <input type="email" name="email" placeholder="Tu correo" required>
-  <textarea name="mensaje" placeholder="Tu mensaje" required></textarea>
+      <input type="text" name="nombre" placeholder="Tu nombre" required>
+      <input type="email" name="email" placeholder="Tu correo" required>
+      <textarea name="mensaje" placeholder="Tu mensaje" required></textarea>
 
-  <input type="hidden" name="_subject" value="Nuevo mensaje desde la web Aura Wellness Sports">
-  <input type="hidden" name="_next" value="https://imsauco.github.io/aurawellness/"> 
-  
-  <button type="submit">Enviar</button>
-</form>
+      <input type="hidden" name="_subject" value="Nuevo mensaje desde la web Aura Wellness Sports">
+      <input type="hidden" name="_next" value="https://imsauco.github.io/aurawellness/formsubmit.html"> 
+      
+      <button type="submit">Enviar</button>
+    </form>
   </div>
 </div>
   <main>
@@ -59,32 +59,52 @@
       <section class="companies" id="companies">
         <div class="companies-container">
           <div class="companies-img">
-            <img src="img/media/carrera_empresas.jpg" alt="Empresas">
+            <img src="img/media/empresa.jpg" alt="Empresas">
           </div>
           <div class = "companies-text">
-            <h3>PROYECTO SALUD Y BIENESTAR</h3>
+            <h3>PROYECTO DE EMPRESAS:<br>SALUD Y BIENESTAR</h3>
             <p>Un entrenador no solo prepara el cuerpo, también impulsa la motivación, previene lesiones y mejora el compromiso del equipo.</p>
-            <p>¿POR QUÉ ENTRENAR CON TU EMPRESA? <ul><li>Mejora del clima laboral.</li><li>Fomento de hábitos saludables.</li><li>Fortalecimiento del equipo.</li><li>Visibilidad y marca positiva.</li><li>Sentimiento de pertenencia.</li><li>Diversión y superación.</li></ul>BENEFICIOS PARA LA EMPRESA. <ul><li>Fortalece los valores.</li><li>Aumenta el engagement.</li><li>Refuerza la marca empleadora.</li><li>Contenido de alto impacto para la comunicación.</li><li>Disminuye la rotación de empleados.</li></ul>LO QUE OFRECEMOS<br><br> 1. Entrenamientos grupales en la empresa <ul><li>Sesiones adaptadas</li><li>Motivación en equipo</li></ul> 2. Entrenamiento online para empleados <ul><li>App de seguimiento con Trainerplan</li><li>Planes personalizados</li><li>Acceso desde cualquier lugar</li></ul> 3. Organización del evento <ul><li>Inscripciones, entrega de dorsales, equipación y logística</li><li>Calentamiento y acompañamiento en carrera</li><li>Espacio privado</li><li>Fotografía y acompañamiento</li><li>Post carrera</li></ul></p>
-          <h4>Pide tu presupuesto</h4>
-          Si deseas obtener tu presupuesto personalizado, no dubes en contactarnos:
+            <p>¿POR QUÉ ENTRENAR CON TU EMPRESA? <ul><li>Mejora del clima laboral.</li><li>Fomento de hábitos saludables.</li><li>Fortalecimiento del equipo.</li><li>Visibilidad y marca positiva.</li><li>Sentimiento de pertenencia.</li><li>Diversión y superación.</li></ul>BENEFICIOS PARA LA EMPRESA. <ul><li>Fortalece los valores.</li><li>Aumenta el engagement.</li><li>Refuerza la marca empleadora.</li><li>Contenido de alto impacto para la comunicación.</li><li>Disminuye la rotación de empleados.</li></ul>LO QUE OFRECEMOS.<br><br> 1. Entrenamientos grupales en la empresa. <ul><li>Sesiones adaptadas.</li><li>Motivación en equipo.</li></ul> 2. Entrenamiento online para empleados. <ul><li>App de seguimiento con Trainerplan.</li><li>Planes personalizados.</li><li>Acceso desde cualquier lugar.</li></ul> 3. Organización del evento "La carrera de las empresas".<ul><li>Inscripciones, entrega de dorsales, equipación y logística.</li><li>Calentamiento y acompañamiento en carrera.</li><li>Espacio privado.</li><li>Fotografía y acompañamiento.</li><li>Post carrera.</li></ul></p>
+          Si deseas obtener tu presupuesto personalizado, no dudes en contactarnos:
           <section class="contact" id="contact">
-              <p><ul>
-                <li>619196682 </li>
-                <li>69646701</li>
-                <li><a href="mailto:info@aurawellnessports.com"><button>Email</button></a></li>
-              </ul></p>
+            <button class="btn" type="button" data-open-modal>Pide tu presupuesto</button>
+              <div id="contact-modal" class="modal" aria-hidden="true" role="dialog" aria-modal="true">
+                <div class="modal-content">
+                  <button class="close" type="button" aria-label="Cerrar" data-close-modal>×</button>
+                  <h2>Contacto</h2>
+                  <form action="https://formsubmit.co/jaime.atleta@hotmail.com" method="POST">
+                    <input type="text" name="nombre" placeholder="Tu nombre" required>
+                    <input type="email" name="email" placeholder="Tu correo" required>
+                    <textarea name="mensaje" placeholder="Tu mensaje" required></textarea>
+
+                    <input type="hidden" name="_subject" value="Nuevo mensaje desde la web Aura Wellness Sports">
+                    <input type="hidden" name="_next" value="https://imsauco.github.io/aurawellness/"> 
+                    
+                    <button type="submit">Enviar</button>
+                  </form>
+                </div>
+              </div>
           </section>
         </div>
         </div>
-        </section>
+      </section>
+      <section class="colabs" id="colabs">
+        <div class="colabs-container">
+          <h3>Empresas en el proyecto:</h3>
+          <div class="colabs-img">
+            <img src="img/logos/astrazenecalogo.png" alt="Colaboraciones">
+            <img src="img/logos/depollogo.png" alt="Colaboraciones">
+          </div>
+        </div>
+      </section>
       <section class="scroll">
-        <h2>Otros servicios disponibles</h2>
+        <h2>Otros servicios a particulares</h2>
         <div class="scroll-container">
           <article class="scroll-card"><img src="img/media/servicios.jpeg"><div class = "scroll-texto">
             <h3>Entrenamiento personal</h3>
             <p>Entrenamiento adaptado a cada persona.<br>A domicilio o donde tú quieras <br>Especializados en sacar el máximo rendimiento a tu tiempo. <br>Seguimiento intensivo.</p>
           </div></article>
-          <article class="scroll-card"><img src="img/media/servicios.jpeg"><div class = "scroll-texto">
+          <article class="scroll-card"><img src="img/media/online.png"><div class = "scroll-texto">
             <h3>Entrenamiento online</h3>
             <p>Planes adaptados a tu rutina <br>Seguimiento por app online para mantener el contacto en todo momento.</p>
           </div></article>
@@ -98,10 +118,30 @@
           </div></article>
         </div>
       </section>
+      <section class="testimonials" id="testimonials">
+        <div class="testimonials-container">
+          <h2>Testimonios</h2>
+          <div class="testimonials-card">
+            <p>"Entrenar con Aura Wellness Sports ha sido una experiencia transformadora. No solo he mejorado mi condición física, sino que también he aprendido a disfrutar del proceso. Rafa y Samu son entrenadores excepcionales que realmente se preocupan por sus clientes."</p>
+            <h3>- Laura M.</h3>
+          </div>
+          <div class="testimonials-card">
+            <p>"La carrera de las empresas organizada por Aura Wellness Sports fue un evento increíble. Todo estuvo perfectamente coordinado y el ambiente fue muy motivador. Mis compañeros y yo nos sentimos parte de algo especial."</p>
+            <h3>- Carlos T.</h3>
+          </div>
+          <div class="testimonials-card">
+            <p>"El entrenamiento online con Aura Wellness Sports me ha permitido mantenerme en forma a pesar de mi apretada agenda. Los planes son personalizados y el seguimiento es constante, lo que me ha ayudado a alcanzar mis objetivos."</p>
+            <h3>- Ana S.</h3>
+          </div>
+        </div>
   </main>
   <footer>
-    <p>© 2025 Aura Wellness Sports</p>
-  </footer>
+  <p>© 2025 Aura Wellness Sports</p>
+  <nav class="legal">
+    <a href="aviso-legal.html">Aviso Legal</a> | 
+    <a href="privacidad.html">Política de Privacidad</a> 
+  </nav>
+</footer>
 
 
   <script>

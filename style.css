@@ -197,14 +197,56 @@ a {
   box-shadow: 0 4px 8px rgba(0,0,0,0.2);
   margin-bottom: 1rem;
 }
+.companies button {
+  position: relative;
+  z-index: 1; 
+  background: rgb(100, 75, 28);
+  color: #fff;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  border-radius: 25px;
+  cursor: pointer;
+  margin: 1rem 2rem;}
+.companies button:hover {
+  background: rgb(56, 42, 15);}
 
-:root { --gap: 1rem; }
-.scroll { padding: 2rem 1rem; width:100vw; margin: 0 auto; }
+.colabs {
+  z-index: 1;
+}
+.colabs-text {
+  background-color:  rgb(1, 1, 50);
+  color: rgb(255, 246, 227);
+  padding: 0 2rem;
+} 
+.colabs h3 {
+  font-size: 1.5rem;
+  color: rgb(1, 1, 50);
+  padding: 0 2rem;
+  
+}
+.colabs-container {
+  display: flex;
+  flex-direction: column;
+}
+.colabs-img {
+  padding:1rem 2rem;
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  }
+.colabs-img img {
+  width: 30%;
+}
+:root { --gap: 1.25rem; }
+.scroll { padding: 0 2rem; width: 100vw; margin: 0 auto; }
 .scroll h2 {
   text-align: left;
   font-size: 3rem;
   color: rgb(1, 1, 50);
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
 }
 
 .scroll-container {
@@ -215,13 +257,13 @@ a {
   -webkit-overflow-scrolling: touch;
   padding: 0 1rem;
   width: 80vw;
-  height: 100vh;
+  height: 80vh;
   flex-wrap: nowrap;
 }
 .scroll-card {
   flex: 0 0 100%;
   width: 80vw;
-  height: 90vh;
+  height: 70vh;
   position: relative; 
   overflow: hidden;
   scroll-snap-align: start;
@@ -253,7 +295,27 @@ a {
   color: white;
   text-shadow: 0 2px 5px rgba(0,0,0,0.7);
 }
-
+.testimonials {
+  z-index: 1;
+}
+.testimonials-card {
+  color: rgb(255, 246, 227);
+} 
+.testimonials h3 {
+  font-size: 1.5rem;
+  color: rgb(255, 246, 227);
+}
+.testimonials h2 {
+  text-align: left;
+  font-size: 3rem;
+  color:rgb(255, 246, 227);
+}
+.testimonials-container {
+  display: flex;
+  flex-direction: column;
+  background-color:  rgb(100, 75, 28);
+  padding: 0 2rem;
+}
 footer {
   text-align: center;
   padding: 1rem;
