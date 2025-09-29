@@ -7,6 +7,19 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <nav class="nav">
+    <button class="nav-logo-btn" aria-expanded="false" aria-controls="main-menu" aria-label="Abrir menú">
+      <img src="img/logos/logo-oficila.svg" alt="Aura Wellness Sports" class="nav-logo">
+    </button>
+    
+    <div id="main-menu" class="menu" hidden>
+      <a href="#about">Quiénes somos</a>
+      <a href="#services">Servicios</a>
+      <a href="#contact">Contacto</a>
+      <a href="mailto:info@aurawellnesssports.com">Escríbenos</a>
+    </div>
+  </nav>
+</div>
   <header>
     <video autoplay muted loop playsinline preload="auto" id="hero-video">
       <source src="img/media/herovid.mp4" type="video/mp4">
@@ -158,6 +171,51 @@
   closeBtns.forEach(b => b.addEventListener('click', close));
   modal.addEventListener('click', e => { if (e.target === modal) close(); });
   document.addEventListener('keydown', e => { if (e.key === 'Escape' && modal.classList.contains('open')) close(); });
+})();
+
+(() => {
+  const btn = document.querySelector('.nav-logo-btn');
+  const menu = document.getElementById('main-menu');
+
+  if (!btn || !menu) return;
+
+  function openMenu() {
+    menu.hidden = false;
+    menu.setAttribute('data-open', 'true');
+    btn.setAttribute('aria-expanded', 'true');
+  }
+  function closeMenu() {
+    menu.removeAttribute('data-open');
+    btn.setAttribute('aria-expanded', 'false');
+    
+    setTimeout(() => { menu.hidden = true; }, 180);
+  }
+  function toggleMenu() {
+    const isOpen = btn.getAttribute('aria-expanded') === 'true';
+    isOpen ? closeMenu() : openMenu();
+  }
+
+  btn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    toggleMenu();
+  });
+
+  
+  document.addEventListener('click', (e) => {
+    if (menu.hidden) return;
+    if (!menu.contains(e.target) && e.target !== btn) closeMenu();
+  });
+
+ 
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeMenu();
+  });
+
+ 
+  menu.addEventListener('click', (e) => {
+    const link = e.target.closest('a');
+    if (link) closeMenu();
+  });
 })();
 </script>
 

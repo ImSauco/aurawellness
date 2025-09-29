@@ -7,8 +7,63 @@ body {
   padding: 0;
   line-height: 1.6;
   background-color: rgb(255, 246, 227);
-
+  position: relative;
 }
+
+.nav{
+  position: fixed;
+  left: 1rem;
+  z-index: 100;          
+  background: transparent;
+}
+.nav-logo-btn{
+  background: transparent;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  appearance: none;
+  -webkit-appearance: none;
+  box-shadow: none;
+  outline: none;
+}
+
+.nav-logo{
+  width: 25vw;          
+  height: auto;
+  display: block;
+}
+.menu{
+  position: fixed;
+  top: calc(2.5rem + 56px + .5rem);           
+  left: 1rem;          
+  min-width: 220px;
+  background: rgba(16,17,37,.9);
+  border: 1px solid var(--panelBorder);
+  border-radius: 12px;
+  padding: .5rem;
+  box-shadow: 0 10px 30px rgba(0,0,0,.35);
+  z-index: 30;
+  display: grid;
+  gap: .25rem;
+  opacity: 0;
+  transform: translateY(-6px);
+  transition: opacity .18s ease, transform .18s ease;
+}
+.menu[data-open="true"]{
+  opacity: 1;
+  transform: translateY(0);
+}
+.menu a{
+  color: #fff;
+  text-decoration: none;
+  padding: .7rem .9rem;
+  border-radius: 10px;
+  font-weight: 600;
+}
+.menu a:hover{ background: rgba(255,255,255,.08); }
+
 header {
   position: relative;              
   background-size: cover;        
@@ -32,7 +87,11 @@ header video {
   object-fit: cover;               
   z-index: -1;                     
 }
-
+.header-logo {
+  z-index: 1;
+  width: 50%;
+  padding: 0 2rem;
+}
 header::before {
   content: "";
   position: absolute;
@@ -200,7 +259,7 @@ a {
 .companies button {
   position: relative;
   z-index: 1; 
-  background: rgb(100, 75, 28);
+  background: rgb(100, 1, 30);
   color: #fff;
   border: none;
   padding: 0.75rem 1.5rem;
@@ -209,7 +268,7 @@ a {
   cursor: pointer;
   margin: 1rem 2rem;}
 .companies button:hover {
-  background: rgb(56, 42, 15);}
+  background: rgb(66, 1, 20);}
 
 .colabs {
   z-index: 1;
@@ -313,7 +372,7 @@ a {
 .testimonials-container {
   display: flex;
   flex-direction: column;
-  background-color:  rgb(100, 75, 28);
+  background-color:  rgb(100, 1, 30);
   padding: 0 2rem;
 }
 footer {
