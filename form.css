@@ -1,41 +1,30 @@
- :root{
-      --bg1:#010141; --bg2:#2c2c7a; --card:rgba(255,255,255,.10);
-      --text:#ffffff; --accent:#ffffff; --accentText:#010141;
-    }
-    *{ box-sizing:border-box; }
-    html,body{ height:100%; margin:0; }
-    body{
-      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      color: var(--text);
-      background: linear-gradient(135deg, var(--bg1), var(--bg2));
-      display:flex; align-items:center; justify-content:center;
-      padding: 2rem;
-    }
-    .card{
-      width:min(560px, 100%);
-      background: var(--card);
-      backdrop-filter: blur(6px);
-      border-radius: 16px;
-      box-shadow: 0 12px 40px rgba(0,0,0,.35);
-      padding: clamp(1.25rem, 3vw, 2rem);
-      text-align: center;
-      animation: fadeIn .5s ease both, floatUp .6s ease .1s both;
-    }
-    h1{ margin:.2rem 0 .6rem; font-size: clamp(1.6rem, 3.5vw, 2.2rem); }
-    p{ margin:.25rem 0; line-height:1.6; opacity:.95; }
-    .hint{ font-size:.95rem; opacity:.85; }
-    .actions{ margin-top: 1.25rem; display:flex; gap:.75rem; justify-content:center; flex-wrap:wrap; }
-    a.button{
-      display:inline-block; text-decoration:none; font-weight:700;
-      padding:.8rem 1.25rem; border-radius:10px;
-      background: var(--accent); color: var(--accentText);
-      box-shadow: 0 6px 18px rgba(0,0,0,.25);
-      transition: transform .15s ease, box-shadow .15s ease, opacity .2s ease;
-    }
-    a.button:hover{ transform: translateY(-1px); box-shadow: 0 10px 22px rgba(0,0,0,.28); }
-    a.secondary{
-      background: transparent; color:#fff; border:1px solid rgba(255,255,255,.6);
-    }
-    @keyframes fadeIn{ from{opacity:0} to{opacity:1} }
-    @keyframes floatUp{ from{ transform: translateY(8px) } to{ transform: translateY(0) } }
-    footer{ margin-top:1rem; font-size:.85rem; opacity:.8; }
+html {
+  scroll-behavior: smooth;
+}
+body {
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  margin: 0;
+  padding: 0;
+  line-height: 1.6;
+  background-color: rgb(255, 246, 227);
+  padding: 0 2rem;
+}
+img{
+  max-width: 30vw;
+  height: auto;
+  display: block;
+  margin: 1rem auto;
+}
+h1, h2, ul, p, a {
+  color: rgb(1, 1, 50);
+  text-decoration: none;
+}
+footer {
+  text-align: center;
+  padding: 1rem;
+}
+footer p {
+  margin: 0;
+  font-size: 0.9rem;
+  color: rgb(1, 1, 50);
+}

@@ -9,6 +9,12 @@ body {
   background-color: rgb(255, 246, 227);
   padding: 0 2rem;
 }
+img{
+  max-width: 30vw;
+  height: auto;
+  display: block;
+  margin: 1rem auto;
+}
 h1, h2, ul, p, a {
   color: rgb(1, 1, 50);
   text-decoration: none;
