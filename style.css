@@ -148,7 +148,7 @@ main {
 .about {
   text-align: left;
   z-index: 1;
-  padding: 0 2rem;
+  padding: 0 2rem 2rem 2rem;
 }
 .about h2 {
   font-size: 2.5rem;
@@ -202,38 +202,23 @@ a {
   text-decoration: none;
 }
 
-.services {
-  padding: 0 2rem;
-  margin-bottom: 1rem;
-  z-index: 1;
-}
-.services h2 {
-  text-align: left;
-  font-size: 2.5rem;
-  color: rgb(1, 1, 50);
-}
-
-.services-container{
-  display: flex;
-  gap: 1rem;
-}
-
-.services-card h3 {
-  margin: 0;
-  font-size: 1.2rem;
-}
 .companies {
   z-index: 1;
+  background-color:  rgb(1, 1, 50);
 }
 .companies-text {
-  background-color:  rgb(1, 1, 50);
   color: rgb(255, 246, 227);
-  padding: 0 2rem;
+  padding: 0 1.5rem;
 } 
+.companies h2 {
+  text-align: left;
+  font-size: 2.5rem;
+  color:rgb(255, 246, 227);
+  padding: 0 2rem;
+}
 .companies h3 {
   font-size: 1.5rem;
   color: rgb(255, 246, 227);
-  
 }
 .companies-container {
   display: flex;
@@ -266,12 +251,12 @@ a {
 .colabs-text {
   background-color:  rgb(1, 1, 50);
   color: rgb(255, 246, 227);
-  padding: 0 2rem;
+  padding: 0 1.5rem;
 } 
 .colabs h3 {
   font-size: 1.5rem;
   color: rgb(1, 1, 50);
-  padding: 0 2rem;
+  padding: 0 1.5rem;
   
 }
 .colabs-container {
@@ -347,6 +332,7 @@ a {
 }
 .testimonials {
   z-index: 1;
+  background-color:  rgb(100, 1, 30);
 }
 .testimonials-card {
   color: rgb(255, 246, 227);
@@ -372,8 +358,7 @@ a {
 .testimonials-container {
   display: flex;
   flex-direction: column;
-  background-color:  rgb(100, 1, 30);
-  padding: 0 2rem;
+  padding: 0 1.5rem;
 }
 footer {
   text-align: center;
@@ -383,4 +368,137 @@ footer p {
   margin: 0;
   font-size: 0.9rem;
   color: rgb(1, 1, 50);
+}
+
+:root{
+  --space: clamp(12px, 2vw, 24px);
+  --h1: clamp(28px, 5vw, 48px);
+  --h2: clamp(22px, 3.2vw, 32px);
+  --p:  clamp(14px, 1.6vw, 18px);
+}
+
+h1{ font-size: var(--h1); }
+h2{ font-size: var(--h2); }
+p, a, li, button, input, textarea{ font-size: var(--p); }
+section{ padding: calc(var(--space)*2) var(--space); }
+
+@media (min-width: 768px){
+  .nav{ right: 1.5rem; left: auto; }
+  .nav-logo{ width: 160px; }
+  .menu{ right: 1.5rem; left: auto; }
+  .scroll-container{
+    height: auto;               
+    width: auto;
+    padding: 0 var(--space);
+    gap: var(--space);
+  }
+  .scroll-card{
+    flex: 0 0 48%;                
+    height: 60vh;                 
+  }
+  .scroll-card img{
+    height: 100%;
+    object-fit: cover;
+  }
+   form{ max-width: 520px; margin: 0 auto; }
+}
+@media (min-width: 1200px){
+  .nav-logo{ width: 180px; }
+  .scroll-card{ flex: 0 0 32%; height: 56vh; width: 50vw; }
+}
+@media (min-width: 900px){
+
+  .about-card{
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    gap: 2rem;
+    height: 85vh;
+    min-height: 480px;      
+    border-radius: 12px;
+    overflow: hidden;
+  }
+  .about-card img{
+    grid-column: 1;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .about-card .about-texto{
+    position: static;
+    background: transparent;
+    bottom: auto; left: auto; right: auto;
+    grid-column: 2;
+    align-self: flex-start;
+    padding: 10rem 2rem 10rem 10rem;
+    text-align: left;
+    color: #111;
+    text-shadow: none;
+  }
+
+  .about-card .about-texto h3{
+    font-size: 1.8rem;
+    margin: 0 0 1rem 0;
+    color: rgb(1,1,50);
+    text-shadow: none;
+  }
+
+  .about-card .about-texto p{
+    font-size: 2rem;
+    margin: 0;
+    color: #333;
+    text-shadow: none;
+  }
+  .about-container{
+    display: block;
+  }
+  .companies-container{
+    display: block;
+  }
+
+  .companies-img{
+    float: left;                   
+    width: 40%;                    
+    margin: 15% 2rem 1rem 2rem;
+  }
+
+  .companies-img img{
+    display: block;
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+  }
+
+  .companies-text{
+    overflow: hidden;
+  }
+  .companies-container::after{
+    content:"";
+    display:block;
+    clear: both;
+  }
+  .colabs {
+  z-index: 1;
+}
+  .colabs-container h3 {
+    font-size: 1.5rem;
+    color: rgb(1, 1, 50);
+    padding:  0 0.5rem;
+  }
+  .colabs-container {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 2rem;
+  }
+  .colabs-img {
+    padding: 1rem 2rem;
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    }
+  .colabs-img img {
+    width: 10vw;
+  }
 }

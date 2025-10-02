@@ -28,3 +28,8 @@ footer p {
   font-size: 0.9rem;
   color: rgb(1, 1, 50);
 }
+@media (min-width: 768px) {
+  img {
+    width: 15vw;
+  }
+}
