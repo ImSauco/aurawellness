@@ -146,12 +146,22 @@ main { position: relative; overflow: hidden; }
 @media (min-width: 900px){
   .about-card{
     display: grid;
-    grid-template-columns: 1.1fr 1fr;
+    grid-template-columns: 1fr 1fr;
     gap: clamp(16px, 3vw, 32px);
-    min-height: 520px;
-    border-radius: 12px; overflow: hidden;
+    height: 100vh;
+    max-height: 700px;
+    border-radius: 12px; 
+    overflow: hidden;
+    align-items: center;
+    box-sizing: border-box;
   }
-  .about-card img{ grid-column: 1; width: 100%; height: 100%; object-fit: cover; }
+  .about-card img{ 
+    grid-column: 1;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; }
+  
+
   .about-card .about-texto{
     position: static !important;
     grid-column: 2;
