@@ -7,6 +7,7 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
   <nav class="nav">
     <button class="nav-logo-btn" aria-expanded="false" aria-controls="main-menu" aria-label="Abrir menú">
       <img src="img/logos/logo-no-bg.svg" alt="Aura Wellness Sports" class="nav-logo">
@@ -19,32 +20,33 @@
       <a href="#testimonials">Testimonios</a>
     </div>
   </nav>
-</div>
+
   <header>
-    <video autoplay muted loop playsinline preload="auto" id="hero-video">
-      <source src="img/media/herovid.mp4" type="video/mp4">
-      Tu navegador no soporta la reproducción de videos.
-    </video>
-    <p>Entrena con propósito.<br> Conecta con tu equipo.<br> Proyecta tus valores.</p>
-    <button class="btn" type="button" data-open-modal>Contáctanos</button>
-</header>
+      <video autoplay muted loop playsinline preload="auto" id="hero-video">
+        <source src="img/media/herovid.mp4" type="video/mp4">
+        Tu navegador no soporta la reproducción de videos.
+      </video>
+      <p>Entrena con propósito.<br> Conecta con tu equipo.<br> Proyecta tus valores.</p>
+      <button class="btn" type="button" data-open-modal>Contáctanos</button>
+  </header>
 
-<div id="contact-modal" class="modal" aria-hidden="true" role="dialog" aria-modal="true">
-  <div class="modal-content">
-    <button class="close" type="button" aria-label="Cerrar" data-close-modal>×</button>
-    <h2>Contacto</h2>
-    <form action="https://formsubmit.co/jaime.atleta@hotmail.com" method="POST">
-      <input type="text" name="nombre" placeholder="Tu nombre" required>
-      <input type="email" name="email" placeholder="Tu correo" required>
-      <textarea name="mensaje" placeholder="Tu mensaje" required></textarea>
+  <div id="contact-modal" class="modal" aria-hidden="true" role="dialog" aria-modal="true">
+    <div class="modal-content">
+      <button class="close" type="button" aria-label="Cerrar" data-close-modal>×</button>
+      <h2>Contacto</h2>
+      <form action="https://formsubmit.co/jaime.atleta@hotmail.com" method="POST">
+        <input type="text" name="nombre" placeholder="Tu nombre" required>
+        <input type="email" name="email" placeholder="Tu correo" required>
+        <textarea name="mensaje" placeholder="Tu mensaje" required></textarea>
 
-      <input type="hidden" name="_subject" value="Nuevo mensaje desde la web Aura Wellness Sports">
-      <input type="hidden" name="_next" value="https://imsauco.github.io/aurawellness/formsubmit.html"> 
-      
-      <button type="submit">Enviar</button>
-    </form>
+        <input type="hidden" name="_subject" value="Nuevo mensaje desde la web Aura Wellness Sports">
+        <input type="hidden" name="_next" value="https://imsauco.github.io/aurawellness/formsubmit.html"> 
+        
+        <button type="submit">Enviar</button>
+      </form>
+    </div>
   </div>
-</div>
+
   <main>
       <section class="about" id="about">
         <h2>QUIÉNES SOMOS</h2>
@@ -145,22 +147,25 @@
             <h3>- Miguel M.</h3>
           </div>
           <div class="testimonials-card">
-            <p>"El entrenamiento online con Aura Wellness Sports me ha permitido mantenerme en forma a pesar de mi apretada agenda. Los planes son personalizados y el seguimiento es constante, lo que me ha ayudado a alcanzar mis objetivos."</p>
-            <h3>- Ana S.</h3>
+            <p>"Siempre confío en Aura para mis planes de entrenamiento y preparación de carreras. Me ayudan a mejorar mi técnica, a evitar lesiones y a superar mi marca personal de carrera en carrera."</p>
+            <div class="testimonials-img"><img src="img/media/alicia.jpg" alt="Alicia d.C."></div>
+            <h3>- Alicia d.C.</h3>
           </div>
         </div>
       </section>
   </main>
+
   <footer>
-  <p>© 2025 Aura Wellness Sports</p>
-  <nav class="legal">
-    <a href="aviso-legal.html">Aviso Legal</a> | 
-    <a href="privacidad.html">Política de Privacidad</a> 
-  </nav>
-</footer>
+    <p>© 2025 Aura Wellness Sports</p>
+    <nav class="legal">
+      <a href="aviso-legal.html">Aviso Legal</a> | 
+      <a href="privacidad.html">Política de Privacidad</a> 
+    </nav>
+  </footer>
 
 
 <script>
+
   window.addEventListener("scroll", () => {
     const nav = document.querySelector(".nav");
     const headerHeight = document.querySelector("header").offsetHeight;
@@ -174,6 +179,7 @@
       nav.style.pointerEvents = "auto";
     }
   });
+
 (() => {
   const modal = document.getElementById('contact-modal');
   const openBtns = document.querySelectorAll('[data-open-modal]');
@@ -233,7 +239,6 @@
   });
 })();
 </script>
-
 
 </body>
 </html>
