@@ -96,7 +96,7 @@ header::before {
 header h1, header p {
   position: relative; z-index: 1;
   font-weight: bold; padding: 0 2rem;
-  font-size: 2rem;
+  font-size: 4rem;
 }
 header button {
   position: relative; z-index: 1;
@@ -114,23 +114,6 @@ header button:hover { background: rgb(0, 0, 30); }
 body.modal-open{ overflow:hidden; }
 
 main { position: relative; overflow: hidden; }
-
-.ads {
-  background-color: rgb(100, 1, 30);
-  color: rgb(255, 246, 227);
-  text-align: center;
-  padding: clamp(16px, 2.5vw, 32px);
-  border-bottom: 1px solid rgba(255,255,255,.15);
-}
-
-.ads p {
-  font-size: clamp(1.2rem, 2.3vw, 1.6rem);
-  font-weight: 600;
-  line-height: 1.55;
-  margin: 0;      
-}
-
-.ads strong { color: rgb(1, 1, 50); }
 
 .about { text-align: left; z-index: 1; padding: 0 2rem 2rem 2rem; }
 .about h2 { font-size: 2.5rem; color: var(--brand-dark); }
