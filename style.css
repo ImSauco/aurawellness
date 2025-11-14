@@ -96,7 +96,7 @@ header::before {
 header h1, header p {
   position: relative; z-index: 1;
   font-weight: bold; padding: 0 2rem;
-  font-size: 4rem;
+  font-size: 2.5rem;
 }
 header button {
   position: relative; z-index: 1;
