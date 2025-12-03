@@ -48,13 +48,13 @@
     <div class="modal-content">
       <button class="close" type="button" aria-label="Cerrar" data-close-modal>×</button>
       <h2>Contacto</h2>
-      <form action="https://formsubmit.co/jaime.atletajgb@gmail.com" method="POST">
+      <form action="https://formsubmit.co/info@byaurawell.com" method="POST">
         <input type="text" name="nombre" placeholder="Tu nombre" required>
         <input type="email" name="email" placeholder="Tu correo" required>
         <textarea name="mensaje" placeholder="Tu mensaje" required></textarea>
 
         <input type="hidden" name="_subject" value="Nuevo mensaje desde la web By Aura">
-        <input type="hidden" name="_next" value="https://imsauco.github.io/aurawellness/formsubmit.html"> 
+        <input type="hidden" name="_next" value="https://byaurawell.com/formsubmit.html"> 
         
         <button type="submit">Enviar</button>
       </form>
@@ -86,7 +86,7 @@
           Si deseas obtener tu presupuesto personalizado, no dudes en contactarnos:
           <section class="contact" id="contact">
             <button class="btn" type="button" data-open-modal>Pide tu presupuesto</button>
-              <div id="contact-modal" class="modal" aria-hidden="true" role="dialog" aria-modal="true">
+              <div id="contact-modal-companies" class="modal" aria-hidden="true" role="dialog" aria-modal="true">
                 <div class="modal-content">
                   <button class="close" type="button" aria-label="Cerrar" data-close-modal>×</button>
                   <h2>Contacto</h2>
@@ -96,7 +96,7 @@
                     <textarea name="mensaje" placeholder="Tu mensaje" required></textarea>
 
                     <input type="hidden" name="_subject" value="Nuevo mensaje desde la web By Aura">
-                    <input type="hidden" name="_next" value="https://imsauco.github.io/aurawellness/"> 
+                    <input type="hidden" name="_next" value="https://byaurawell.com/formsubmit.html"> 
                     
                     <button type="submit">Enviar</button>
                   </form>
@@ -115,6 +115,7 @@
           </div>
         </div>
       </section>
+
       <section class="scroll">
         <h3>Otros servicios a particulares</h3>
         <div class="scroll-container">
@@ -136,6 +137,7 @@
           </div></article>
         </div>
       </section>
+
       <section class="news" id="news">
         <h2>ÚLTIMOS EVENTOS</h2>
         <div class="news-container">
@@ -150,6 +152,7 @@
                   </div>
         </div>
       </section>
+  
       <section class="shop" id="shop">
         <h2>BY AURA COLLECTION</h2>
         <div class="shop-container">
@@ -161,8 +164,11 @@
               <img src="img/media/blacktfront.jpeg" alt="Camiseta By Aura">
               <h3>Black Aura Tee</h3>
               <p></p>
-              <a class="btn-shop" data-open-modal>Preguntar disponibilidad</a>
-              <div id="contact-modal" class="modal" aria-hidden="true" role="dialog" aria-modal="true">
+              <a class="btn-shop" data-open-modal data-target="contact-modal-blacktee">
+                Preguntar disponibilidad
+              </a>
+
+              <div id="contact-modal-blacktee" class="modal" aria-hidden="true" role="dialog" aria-modal="true">
                 <div class="modal-content">
                   <button class="close" type="button" aria-label="Cerrar" data-close-modal>×</button>
                   <h2>Contacto</h2>
@@ -171,19 +177,25 @@
                     <input type="email" name="email" placeholder="Tu correo" required>
                     <textarea name="mensaje" placeholder="Tu mensaje" required></textarea>
 
-                    <input type="hidden" name="_subject" value="Nuevo mensaje desde la web By Aura">
-                    <input type="hidden" name="_next" value="https://imsauco.github.io/aurawellness/"> 
-                    
+                    <input type="hidden" name="_subject" value="Consulta Black Aura Tee desde la web By Aura">
+                    <input type="hidden" name="_next" value="https://byaurawell.com/formsubmit.html">
+
                     <button type="submit">Enviar</button>
                   </form>
                 </div>
               </div>
+            </div>
+
+          
             <div class="shop-card">
               <img src="img/media/navytfront.jpeg" alt="Camiseta By Aura">
               <h3>Navy Aura Tee</h3>
               <p></p>
-              <a class="btn-shop" data-open-modal>Preguntar disponibilidad</a>
-              <div id="contact-modal" class="modal" aria-hidden="true" role="dialog" aria-modal="true">
+              <a class="btn-shop" data-open-modal data-target="contact-modal-navytee">
+                Preguntar disponibilidad
+              </a>
+
+              <div id="contact-modal-navytee" class="modal" aria-hidden="true" role="dialog" aria-modal="true">
                 <div class="modal-content">
                   <button class="close" type="button" aria-label="Cerrar" data-close-modal>×</button>
                   <h2>Contacto</h2>
@@ -192,13 +204,14 @@
                     <input type="email" name="email" placeholder="Tu correo" required>
                     <textarea name="mensaje" placeholder="Tu mensaje" required></textarea>
 
-                    <input type="hidden" name="_subject" value="Nuevo mensaje desde la web By Aura">
-                    <input type="hidden" name="_next" value="https://imsauco.github.io/aurawellness/"> 
-                    
+                    <input type="hidden" name="_subject" value="Consulta Navy Aura Tee desde la web By Aura">
+                    <input type="hidden" name="_next" value="https://byaurawell.com/formsubmit.html">
+
                     <button type="submit">Enviar</button>
                   </form>
                 </div>
               </div>
+            </div>
           </div>
         </div>
       </section>
@@ -252,19 +265,47 @@
     }
   });
 
-(() => {
-  const modal = document.getElementById('contact-modal');
-  const openBtns = document.querySelectorAll('[data-open-modal]');
-  const closeBtns = document.querySelectorAll('[data-close-modal]');
+  (() => {
+    const body = document.body;
+    const openBtns = document.querySelectorAll('[data-open-modal]');
 
-  function open(){ modal.classList.add('open'); document.body.classList.add('modal-open'); }
-  function close(){ modal.classList.remove('open'); document.body.classList.remove('modal-open'); }
+    function openModal(modal) {
+      modal.classList.add('open');
+      modal.setAttribute('aria-hidden', 'false');
+      body.classList.add('modal-open');
+    }
 
-  openBtns.forEach(b => b.addEventListener('click', e => { e.preventDefault(); open(); }));
-  closeBtns.forEach(b => b.addEventListener('click', close));
-  modal.addEventListener('click', e => { if (e.target === modal) close(); });
-  document.addEventListener('keydown', e => { if (e.key === 'Escape' && modal.classList.contains('open')) close(); });
-})();
+    function closeModal(modal) {
+      modal.classList.remove('open');
+      modal.setAttribute('aria-hidden', 'true');
+      body.classList.remove('modal-open');
+    }
+
+    openBtns.forEach(btn => {
+      btn.addEventListener('click', e => {
+        e.preventDefault();
+        const targetId = btn.dataset.target || 'contact-modal';
+        const modal = document.getElementById(targetId);
+        if (!modal) return;
+        openModal(modal);
+      });
+    });
+
+    document.querySelectorAll('.modal').forEach(modal => {
+      modal.addEventListener('click', e => {
+        if (e.target === modal) closeModal(modal);
+      });
+      modal.querySelectorAll('[data-close-modal]').forEach(closeBtn => {
+        closeBtn.addEventListener('click', () => closeModal(modal));
+      });
+    });
+
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape') {
+        document.querySelectorAll('.modal.open').forEach(modal => closeModal(modal));
+      }
+    });
+  })();
 
 (() => {
   const btn = document.querySelector('.nav-logo-btn');
