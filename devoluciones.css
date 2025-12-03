@@ -1,0 +1,35 @@
+html {
+  scroll-behavior: smooth;
+}
+body {
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  margin: 0;
+  padding: 0;
+  line-height: 1.6;
+  background-color: rgb(255, 246, 227);
+  padding: 0 2rem;
+}
+img{
+  max-width: 30vw;
+  height: auto;
+  display: block;
+  margin: 1rem auto;
+}
+h1, h2, ul, p, a {
+  color: rgb(1, 1, 50);
+  text-decoration: none;
+}
+footer {
+  text-align: center;
+  padding: 1rem;
+}
+footer p {
+  margin: 0;
+  font-size: 0.9rem;
+  color: rgb(1, 1, 50);
+}
+@media (min-width: 768px) {
+  img {
+    width: 15vw;
+  }
+}
