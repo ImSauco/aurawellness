@@ -288,6 +288,63 @@ main { position: relative; overflow: hidden; }
   }
 }
 
+/* ===== ADDITIONAL SERVICES SECTION ===== */
+.additional-services { 
+  z-index: 1; 
+  padding: 2rem;
+  background-color: rgb(255, 246, 227);
+  text-align: left;
+}
+
+.additional-services h2 {
+  font-size: 2.5rem;
+  color: var(--brand-dark);
+  margin: 0 0 2rem 0;
+}
+
+.additional-services-container {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.additional-services-card {
+  background-color: var(--brand-dark);
+  color: rgb(255, 246, 227);
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.additional-services-card img {
+  max-width: 200px;
+  max-height: 200px;
+  width: auto;
+  height: auto;
+  margin-bottom: 1rem;
+  border-radius: 8px;
+}
+
+.additional-services-card h3 {
+  font-size: 1.5rem;
+  color: rgb(255, 246, 227);
+  margin: 0 0 1rem 0;
+}
+
+.additional-services-card p {
+  color: rgb(255, 246, 227);
+  margin: 0;
+  line-height: 1.6;
+}
+
+@media (min-width: 900px) {
+  .additional-services-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+  }
+}
+
 .scroll { padding: 0 2rem; width: min(1200px, 92%); margin: 0 auto; } /* evita 100vw */
 .scroll h3 { text-align: left; font-size: 1.5rem; color: var(--brand-dark); margin: 1rem 1rem 1rem 0; }
 
