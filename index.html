@@ -10,6 +10,7 @@
   <meta property="og:url" content="https://byaurawell.com">
   <meta property="og:type" content="website">
   <title>By Aura</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
   <link rel="icon" type="image/png" sizes="16x16" href="img/logos/favicon-16.png">
   <link rel="icon" type="image/png" sizes="32x32" href="img/logos/favicon-32.png">
@@ -21,11 +22,12 @@
 </head>
 <body>
 
+  <!-- NAVEGACIÓN -->
   <nav class="nav">
     <button class="nav-logo-btn" aria-expanded="false" aria-controls="main-menu" aria-label="Abrir menú">
-      <img src="img/logos/logo-no-bg.svg" alt="By aura" class="nav-logo">
+      <img src="img/logos/logo-no-bg.svg" alt="By Aura" class="nav-logo">
     </button>
-    
+
     <div id="main-menu" class="menu" hidden>
       <a href="#about">Quiénes somos</a>
       <a href="#companies">A qué nos dedicamos</a>
@@ -35,15 +37,17 @@
     </div>
   </nav>
 
+  <!-- HERO SECTION -->
   <header>
-      <video autoplay muted loop playsinline preload="auto" id="hero-video">
-        <source src="img/media/herovid.mp4" type="video/mp4">
-        Tu navegador no soporta la reproducción de videos.
-      </video>
-      <p>"Our energy,<br> your aura."</p>
-      <button class="btn" type="button" data-open-modal data-target="contact-modal">Contáctanos</button>
+    <video autoplay muted loop playsinline preload="auto" id="hero-video">
+      <source src="img/media/herovid.mp4" type="video/mp4">
+      Tu navegador no soporta la reproducción de videos.
+    </video>
+    <p>"Our energy,<br>your aura."</p>
+    <button class="btn" type="button" data-open-modal data-target="contact-modal">Contáctanos</button>
   </header>
 
+  <!-- MODAL: CONTACTO GENERAL -->
   <div id="contact-modal" class="modal" aria-hidden="true" role="dialog" aria-modal="true">
     <div class="modal-content">
       <button class="close" type="button" aria-label="Cerrar" data-close-modal>×</button>
@@ -52,201 +56,277 @@
         <input type="text" name="nombre" placeholder="Tu nombre" required>
         <input type="email" name="email" placeholder="Tu correo" required>
         <textarea name="mensaje" placeholder="Tu mensaje" required></textarea>
-
         <input type="hidden" name="_subject" value="Nuevo mensaje desde la web By Aura">
         <input type="hidden" name="_next" value="https://byaurawell.com/formsubmit.html">
-
         <button type="submit">Enviar</button>
       </form>
     </div>
   </div>
 
+  <!-- CONTENIDO PRINCIPAL -->
   <main>
-      <section class="about" id="about">
-        <h2>QUIÉNES SOMOS</h2>
-        <div class="about-container">
-          <div class="about-card">
-              <img src="img/media/Rafa_Samu.jpeg" alt="Samu y Rafa">
-                  <div class = "about-texto">
-                    <h3>Rafa y Samu</h3>
-                    <p>Somos Rafael Marín y Samuel Gómez fundadores de By Aura <br>Más de 10 años de experiencia en el sector del entrenamiento. <br>Especializados en entrenamiento corporativo. <br>Apasionados por el deporte y el bienestar laboral.</p>
-                  </div>
-        </div>
-      </section>
-      <section class="companies" id="companies">
-        <div class="companies-container">
-            <h2>¿A QUÉ NOS DEDICAMOS?</h2>
-          <div class="companies-img">
-            <img src="img/media/empresa.jpg" alt="Empresas">
-          </div>
-          <div class = "companies-text">
-            <h3>PROYECTO DE EMPRESAS:<br>SALUD Y BIENESTAR</h3>
-            <p>Un entrenador no solo prepara el cuerpo, también impulsa la motivación, previene lesiones y mejora el compromiso del equipo.</p>
-            <p>¿POR QUÉ ENTRENAR CON TU EMPRESA? <ul><li>Mejora del clima laboral.</li><li>Fomento de hábitos saludables.</li><li>Fortalecimiento del equipo.</li><li>Visibilidad y marca positiva.</li><li>Sentimiento de pertenencia.</li><li>Diversión y superación.</li></ul>BENEFICIOS PARA LA EMPRESA. <ul><li>Fortalece los valores.</li><li>Aumenta el engagement.</li><li>Refuerza la marca empleadora.</li><li>Contenido de alto impacto para la comunicación.</li><li>Disminuye la rotación de empleados.</li></ul>LO QUE OFRECEMOS.<br><br> 1. Entrenamientos grupales en la empresa. <ul><li>Sesiones adaptadas.</li><li>Motivación en equipo.</li></ul> 2. Entrenamiento online para empleados. <ul><li>App de seguimiento con Trainerplan.</li><li>Planes personalizados.</li><li>Acceso desde cualquier lugar.</li></ul> 3. Organización del evento "La carrera de las empresas".<ul><li>Inscripciones, entrega de dorsales, equipación y logística.</li><li>Calentamiento y acompañamiento en carrera.</li><li>Espacio privado.</li><li>Fotografía y acompañamiento.</li><li>Post carrera.</li></ul></p>
-          Si deseas obtener tu presupuesto personalizado, no dudes en contactarnos:
-          <section class="contact" id="contact">
-            <button class="btn" type="button" data-open-modal data-target="contact-modal-companies">Pide tu presupuesto</button>
-              <div id="contact-modal-companies" class="modal" aria-hidden="true" role="dialog" aria-modal="true">
-                <div class="modal-content">
-                  <button class="close" type="button" aria-label="Cerrar" data-close-modal>×</button>
-                  <h2>Contacto</h2>
-                  <form action="https://formspree.io/f/xanrbqnr" method="POST">
-                    <input type="text" name="nombre" placeholder="Tu nombre" required>
-                    <input type="email" name="email" placeholder="Tu correo" required>
-                    <textarea name="mensaje" placeholder="Tu mensaje" required></textarea>
 
-                    <input type="hidden" name="_subject" value="Solicitud presupuesto empresas – By Aura">
-                    <input type="hidden" name="_next" value="https://byaurawell.com/formsubmit.html">
+    <!-- SECCIÓN: QUIÉNES SOMOS -->
+    <section class="about" id="about">
+      <h2>QUIÉNES SOMOS</h2>
+      <div class="about-container">
+        <div class="about-card">
+          <img src="img/media/Rafa_Samu.jpeg" alt="Samu y Rafa">
+          <div class="about-texto">
+            <h3>Rafa y Samu</h3>
+            <p>Somos Rafael Marín y Samuel Gómez fundadores de By Aura<br>Más de 10 años de experiencia en el sector del entrenamiento.<br>Especializados en entrenamiento corporativo.<br>Apasionados por el deporte y el bienestar laboral.</p>
+          </div>
+        </div>
+      </div>
+    </section>
 
-                    <button type="submit">Enviar</button>
-                  </form>
-                </div>
-              </div>
-          </section>
+    <!-- SECCIÓN: SERVICIOS EMPRESARIALES -->
+    <section class="companies" id="companies">
+      <div class="companies-container">
+        <h2>¿A QUÉ NOS DEDICAMOS?</h2>
+        <div class="companies-img">
+          <img src="img/media/empresa.jpg" alt="Empresas">
         </div>
-        </div>
-      </section>
-      <section class="colabs" id="colabs">
-        <div class="colabs-container">
-          <h3>Empresas en el proyecto:</h3>
-          <div class="colabs-img">
-            <img src="img/logos/astrazenecalogo.png" alt="Colaboraciones">
-            <img src="img/logos/depollogo.png" alt="Colaboraciones">
+        <div class="companies-text">
+          <h3>PROYECTO DE EMPRESAS:<br>SALUD Y BIENESTAR</h3>
+          <p>Un entrenador no solo prepara el cuerpo, también impulsa la motivación, previene lesiones y mejora el compromiso del equipo.</p>
+
+          <h4>¿POR QUÉ ENTRENAR CON TU EMPRESA?</h4>
+          <ul>
+            <li>Mejora del clima laboral.</li>
+            <li>Fomento de hábitos saludables.</li>
+            <li>Fortalecimiento del equipo.</li>
+            <li>Visibilidad y marca positiva.</li>
+            <li>Sentimiento de pertenencia.</li>
+            <li>Diversión y superación.</li>
+          </ul>
+
+          <h4>BENEFICIOS PARA LA EMPRESA</h4>
+          <ul>
+            <li>Fortalece los valores.</li>
+            <li>Aumenta el engagement.</li>
+            <li>Refuerza la marca empleadora.</li>
+            <li>Contenido de alto impacto para la comunicación.</li>
+            <li>Disminuye la rotación de empleados.</li>
+          </ul>
+
+          <h4>LO QUE OFRECEMOS</h4>
+          <ol>
+            <li>
+              <strong>Entrenamientos grupales en la empresa</strong>
+              <ul>
+                <li>Sesiones adaptadas.</li>
+                <li>Motivación en equipo.</li>
+              </ul>
+            </li>
+            <li>
+              <strong>Entrenamiento online para empleados</strong>
+              <ul>
+                <li>App de seguimiento con Trainerplan.</li>
+                <li>Planes personalizados.</li>
+                <li>Acceso desde cualquier lugar.</li>
+              </ul>
+            </li>
+            <li>
+              <strong>Organización del evento "La carrera de las empresas"</strong>
+              <ul>
+                <li>Inscripciones, entrega de dorsales, equipación y logística.</li>
+                <li>Calentamiento y acompañamiento en carrera.</li>
+                <li>Espacio privado.</li>
+                <li>Fotografía y acompañamiento.</li>
+                <li>Post carrera.</li>
+              </ul>
+            </li>
+          </ol>
+
+          <p>Si deseas obtener tu presupuesto personalizado, no dudes en contactarnos:</p>
+          <button class="btn" type="button" data-open-modal data-target="contact-modal-companies">Pide tu presupuesto</button>
+
+          <!-- MODAL: PRESUPUESTO EMPRESAS -->
+          <div id="contact-modal-companies" class="modal" aria-hidden="true" role="dialog" aria-modal="true">
+            <div class="modal-content">
+              <button class="close" type="button" aria-label="Cerrar" data-close-modal>×</button>
+              <h2>Solicita tu presupuesto</h2>
+              <form action="https://formspree.io/f/xanrbqnr" method="POST">
+                <input type="text" name="nombre" placeholder="Tu nombre" required>
+                <input type="email" name="email" placeholder="Tu correo" required>
+                <textarea name="mensaje" placeholder="Tu mensaje" required></textarea>
+                <input type="hidden" name="_subject" value="Solicitud presupuesto empresas – By Aura">
+                <input type="hidden" name="_next" value="https://byaurawell.com/formsubmit.html">
+                <button type="submit">Enviar</button>
+              </form>
+            </div>
           </div>
         </div>
-      </section>
-      <section class="additional-services" id="additional-services">
-        <h2>Servicios adicionales</h2>
-        <div class="additional-services-container">
-          <div class="additional-services-card">
-            <h3>Asesoramiento nutricional</h3>
-            <p>Te ofrecemos pautas nutricionales adaptadas a tus objetivos y estilo de vida, ayudándote a optimizar tu rendimiento y bienestar general con la colaboración de un nutricionista y la marca de suplementación deportiva Crown Sports Nutrition.</p>
-            <img src="img/logos/Crown.png" alt="logo crown">
-          </div>
+      </div>
+    </section>
+
+    <!-- SECCIÓN: COLABORACIONES -->
+    <section class="colabs" id="colabs">
+      <div class="colabs-container">
+        <h3>Empresas en el proyecto:</h3>
+        <div class="colabs-img">
+          <img src="img/logos/astrazenecalogo.png" alt="Colaboración AstraZeneca">
+          <img src="img/logos/depollogo.png" alt="Colaboración Depol">
         </div>
-      </section>
-      <section class="scroll">
-        <h3>Otros servicios a particulares</h3>
-        <div class="scroll-container">
-          <article class="scroll-card"><img src="img/media/servicios.jpeg"><div class = "scroll-texto">
+      </div>
+    </section>
+
+    <!-- SECCIÓN: SERVICIOS ADICIONALES -->
+    <section class="additional-services" id="additional-services">
+      <h2>Servicios adicionales</h2>
+      <div class="additional-services-container">
+        <div class="additional-services-card">
+          <h3>Asesoramiento nutricional</h3>
+          <p>Te ofrecemos pautas nutricionales adaptadas a tus objetivos y estilo de vida, ayudándote a optimizar tu rendimiento y bienestar general con la colaboración de un nutricionista y la marca de suplementación deportiva Crown Sports Nutrition.</p>
+          <img src="img/logos/Crown.png" alt="Logo Crown Sports Nutrition">
+        </div>
+      </div>
+    </section>
+
+    <!-- SECCIÓN: SERVICIOS A PARTICULARES -->
+    <section class="scroll">
+      <h3>Otros servicios a particulares</h3>
+      <div class="scroll-container">
+        <article class="scroll-card">
+          <img src="img/media/servicios.jpeg" alt="Entrenamiento personal">
+          <div class="scroll-texto">
             <h3>Entrenamiento personal</h3>
             <p>Entrenamiento adaptado.<br>A domicilio o donde tú quieras.<br>Sacamos el máximo a tu tiempo.<br>Seguimiento intensivo.</p>
-          </div></article>
-          <article class="scroll-card"><img src="img/media/online.png"><div class = "scroll-texto">
+          </div>
+        </article>
+
+        <article class="scroll-card">
+          <img src="img/media/online.png" alt="Entrenamiento online">
+          <div class="scroll-texto">
             <h3>Entrenamiento online</h3>
             <p>Planes adaptados a tu rutina.<br>Seguimiento por app online en todo momento.</p>
-          </div></article>
-          <article class="scroll-card"><img src="img/media/hero.jpeg"><div class = "scroll-texto">
+          </div>
+        </article>
+
+        <article class="scroll-card">
+          <img src="img/media/hero.jpeg" alt="Grupos presenciales">
+          <div class="scroll-texto">
             <h3>Grupos presencial</h3>
             <p>Entrena desde el lado más social.<br>Diviértete mientras entrenas.<br>Grupos reducidos.</p>
-          </div></article>
-          <article class="scroll-card"><img src="img/media/IMG_7367.jpeg"><div class = "scroll-texto">
+          </div>
+        </article>
+
+        <article class="scroll-card">
+          <img src="img/media/IMG_7367.jpeg" alt="Preparación de opositores">
+          <div class="scroll-texto">
             <h3>Opositores</h3>
-            <p>Preparación física para oposiciones.<br>Las pruebas serán un trámite.<br>Policia, bombero, guardia civil...</p>
-          </div></article>
-        </div>
-      </section>
-      <section class="news" id="news">
-        <h2>ÚLTIMOS EVENTOS</h2>
-        <div class="news-container">
-          <div class="news-card">
-               <img src="img/media/Carreraempresas.jpeg" alt="Carrera Empresas">
-                  <div class = "news-texto">
-                    <h3>Carrera de las Empresas 2025</h3>
-                    <p>Hoy hemos vivido una jornada realmente especial participando en la Carrera de las Empresas en Madrid y Barcelona junto a AstraZeneca, un evento que ha reunido a 40 corredores en total en torno al deporte, la salud y el trabajo en equipo.<br><br>Desde By Aura, nos hemos encargado de toda la organización y logística del evento, asegurándonos de que cada detalle estuviera perfectamente coordinado para que los participantes pudieran disfrutar al máximo de la experiencia.<br><br>Durante las semanas previas, hemos estado trabajando en cada detalle: desde la búsqueda del local, hasta la preparación de un desayuno nutritivo para los empleados, así como la planificación integral del día del evento para que todo saliera a la perfección.<br><br>El día de la carrera, nuestros entrenadores lideraron un calentamiento dinámico y motivador, preparando a los corredores para el desafío que tenían por delante. A lo largo del recorrido, brindamos apoyo y acompañamiento constante, fomentando un ambiente de camaradería y superación personal.<br><br>El ambiente durante la carrera fue extraordinario, cargado de energía, motivación y compañerismo. Este tipo de iniciativas son fundamentales no solo para fomentar la actividad física, sino también para reforzar los vínculos entre los empleados y promover una cultura corporativa más saludable y cohesionada.<br><br>Al finalizar la prueba, compartimos un momento distendido durante el desayuno, donde no faltaron las risas y la sensación de haber vivido una experiencia conjunta muy positiva.<br><br>Eventos como este contribuyen de manera directa a crear un entorno laboral más dinámico, saludable y comprometido, alineado con los valores de bienestar y equipo que impulsamos.</p>
-                  </div>
-                  <div class="news-boton">
-                    <a href="eventos.html" class="btn-ver-todos">Ver todos los eventos</a>
-                  </div>
+            <p>Preparación física para oposiciones.<br>Las pruebas serán un trámite.<br>Policía, bombero, guardia civil...</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- SECCIÓN: ÚLTIMOS EVENTOS -->
+    <section class="news" id="news">
+      <h2>ÚLTIMOS EVENTOS</h2>
+      <div class="news-container">
+        <div class="news-card">
+          <img src="img/media/Carreraempresas.jpeg" alt="Carrera Empresas">
+          <div class="news-texto">
+            <h3>Carrera de las Empresas 2025</h3>
+            <p>Hoy hemos vivido una jornada realmente especial participando en la Carrera de las Empresas en Madrid y Barcelona junto a AstraZeneca, un evento que ha reunido a 40 corredores en total en torno al deporte, la salud y el trabajo en equipo.<br><br>Desde By Aura, nos hemos encargado de toda la organización y logística del evento, asegurándonos de que cada detalle estuviera perfectamente coordinado para que los participantes pudieran disfrutar al máximo de la experiencia.<br><br>Durante las semanas previas, hemos estado trabajando en cada detalle: desde la búsqueda del local, hasta la preparación de un desayuno nutritivo para los empleados, así como la planificación integral del día del evento para que todo saliera a la perfección.<br><br>El día de la carrera, nuestros entrenadores lideraron un calentamiento dinámico y motivador, preparando a los corredores para el desafío que tenían por delante. A lo largo del recorrido, brindamos apoyo y acompañamiento constante, fomentando un ambiente de camaradería y superación personal.<br><br>El ambiente durante la carrera fue extraordinario, cargado de energía, motivación y compañerismo. Este tipo de iniciativas son fundamentales no solo para fomentar la actividad física, sino también para reforzar los vínculos entre los empleados y promover una cultura corporativa más saludable y cohesionada.<br><br>Al finalizar la prueba, compartimos un momento distendido durante el desayuno, donde no faltaron las risas y la sensación de haber vivido una experiencia conjunta muy positiva.<br><br>Eventos como este contribuyen de manera directa a crear un entorno laboral más dinámico, saludable y comprometido, alineado con los valores de bienestar y equipo que impulsamos.</p>
+          </div>
+          <div class="news-boton">
+            <a href="eventos.html" class="btn-ver-todos">Ver todos los eventos</a>
           </div>
         </div>
-      </section>
-  
-      <section class="shop" id="shop">
-        <h2>BY AURA COLLECTION</h2>
-        <div class="shop-container">
-          <div class="shop-top">
-            <img src="img/media/blacktback.jpeg" alt="">
-          </div>
-          <div class="shop-bottom">
-            <div class="shop-card">
-              <img src="img/media/blacktfront.jpeg" alt="Camiseta By Aura">
-              <h3>Black Aura Tee</h3>
-              <p></p>
-              <a class="btn-shop" data-open-modal data-target="contact-modal-blacktee">
-                Preguntar disponibilidad
-              </a>
-              <div id="contact-modal-blacktee" class="modal" aria-hidden="true" role="dialog" aria-modal="true">
-                <div class="modal-content">
-                  <button class="close" type="button" aria-label="Cerrar" data-close-modal>×</button>
-                  <h2>Contacto</h2>
-                  <form action="https://formspree.io/f/xanrbqnr" method="POST">
-                    <input type="text" name="nombre" placeholder="Tu nombre" required>
-                    <input type="email" name="email" placeholder="Tu correo" required>
-                    <textarea name="mensaje" placeholder="Tu mensaje" required></textarea>
+      </div>
+    </section>
 
-                    <input type="hidden" name="_subject" value="Consulta Black Aura Tee desde la web By Aura">
-                    <input type="hidden" name="_next" value="https://byaurawell.com/formsubmit.html">
+    <!-- SECCIÓN: TIENDA -->
+    <section class="shop" id="shop">
+      <h2>BY AURA COLLECTION</h2>
+      <div class="shop-container">
+        <div class="shop-top">
+          <img src="img/media/blacktback.jpeg" alt="By Aura Collection portada">
+        </div>
+        <div class="shop-bottom">
+          <!-- PRODUCTO 1 -->
+          <div class="shop-card">
+            <img src="img/media/blacktfront.jpeg" alt="Camiseta Black Aura Tee">
+            <h3>Black Aura Tee</h3>
+            <a class="btn-shop" data-open-modal data-target="contact-modal-blacktee">Preguntar disponibilidad</a>
 
-                    <button type="submit">Enviar</button>
-                  </form>
-                </div>
+            <div id="contact-modal-blacktee" class="modal" aria-hidden="true" role="dialog" aria-modal="true">
+              <div class="modal-content">
+                <button class="close" type="button" aria-label="Cerrar" data-close-modal>×</button>
+                <h2>Consulta Black Aura Tee</h2>
+                <form action="https://formspree.io/f/xanrbqnr" method="POST">
+                  <input type="text" name="nombre" placeholder="Tu nombre" required>
+                  <input type="email" name="email" placeholder="Tu correo" required>
+                  <textarea name="mensaje" placeholder="Tu mensaje" required></textarea>
+                  <input type="hidden" name="_subject" value="Consulta Black Aura Tee desde la web By Aura">
+                  <input type="hidden" name="_next" value="https://byaurawell.com/formsubmit.html">
+                  <button type="submit">Enviar</button>
+                </form>
               </div>
             </div>
+          </div>
 
-          
-            <div class="shop-card">
-              <img src="img/media/navytfront.jpeg" alt="Camiseta By Aura">
-              <h3>Navy Aura Tee</h3>
-              <p></p>
-              <a class="btn-shop" data-open-modal data-target="contact-modal-navytee">
-                Preguntar disponibilidad
-              </a>
+          <!-- PRODUCTO 2 -->
+          <div class="shop-card">
+            <img src="img/media/navytfront.jpeg" alt="Camiseta Navy Aura Tee">
+            <h3>Navy Aura Tee</h3>
+            <a class="btn-shop" data-open-modal data-target="contact-modal-navytee">Preguntar disponibilidad</a>
 
-              <div id="contact-modal-navytee" class="modal" aria-hidden="true" role="dialog" aria-modal="true">
-                <div class="modal-content">
-                  <button class="close" type="button" aria-label="Cerrar" data-close-modal>×</button>
-                  <h2>Contacto</h2>
-                  <form action="https://formspree.io/f/xanrbqnr" method="POST">
-                    <input type="text" name="nombre" placeholder="Tu nombre" required>
-                    <input type="email" name="email" placeholder="Tu correo" required>
-                    <textarea name="mensaje" placeholder="Tu mensaje" required></textarea>
-
-                    <input type="hidden" name="_subject" value="Consulta Navy Aura Tee desde la web By Aura">
-                    <input type="hidden" name="_next" value="https://byaurawell.com/formsubmit.html">
-
-                    <button type="submit">Enviar</button>
-                  </form>
-                </div>
+            <div id="contact-modal-navytee" class="modal" aria-hidden="true" role="dialog" aria-modal="true">
+              <div class="modal-content">
+                <button class="close" type="button" aria-label="Cerrar" data-close-modal>×</button>
+                <h2>Consulta Navy Aura Tee</h2>
+                <form action="https://formspree.io/f/xanrbqnr" method="POST">
+                  <input type="text" name="nombre" placeholder="Tu nombre" required>
+                  <input type="email" name="email" placeholder="Tu correo" required>
+                  <textarea name="mensaje" placeholder="Tu mensaje" required></textarea>
+                  <input type="hidden" name="_subject" value="Consulta Navy Aura Tee desde la web By Aura">
+                  <input type="hidden" name="_next" value="https://byaurawell.com/formsubmit.html">
+                  <button type="submit">Enviar</button>
+                </form>
               </div>
             </div>
           </div>
         </div>
-      </section>
-      
-      <section class="testimonials" id="testimonials">
-        <h2>Testimonios</h2>
-        <div class="testimonials-container">
-          <div class="testimonials-card">
-            <p>"Muchas gracias por estos meses trabajando con vosotros, sin duda el punto que necesitaba para ir 100% segura en las físicas un acierto"</p>
-            <div class="testimonials-img"><img src="img/media/lorena.jpg" alt="Lorena R."></div>
-            <h3>- Lorena R.</h3>
+      </div>
+    </section>
+
+    <!-- SECCIÓN: TESTIMONIOS -->
+    <section class="testimonials" id="testimonials">
+      <h2>Testimonios</h2>
+      <div class="testimonials-container">
+        <div class="testimonials-card">
+          <p>"Muchas gracias por estos meses trabajando con vosotros, sin duda el punto que necesitaba para ir 100% segura en las físicas un acierto"</p>
+          <div class="testimonials-img">
+            <img src="img/media/lorena.jpg" alt="Lorena R.">
           </div>
-          <div class="testimonials-card">
+          <h3>- Lorena R.</h3>
+        </div>
+
+        <div class="testimonials-card">
           <p>"Desde que entreno con Aura he mejorado mi técnica de carrera y la forma de entrenar, aprendiendo el propósito de cada entrenamiento y la organización de las semanas."</p>
-            <div class="testimonials-bottom"><img src="img/media/miguel.jpg" alt="Miguel M.">
-            <h3>- Miguel M.</h3>
-            </div>
+          <div class="testimonials-img">
+            <img src="img/media/miguel.jpg" alt="Miguel M.">
           </div>
-          <div class="testimonials-card">
-            <p>"Siempre confío en Aura para mis planes de entrenamiento y preparación de carreras. Me ayudan a mejorar mi técnica, a evitar lesiones y a superar mi marca personal de carrera en carrera."</p>
-            <div class="testimonials-img"><img src="img/media/alicia.jpg" alt="Alicia d.C."></div>
-            <h3>- Alicia d. C.</h3>
-          </div>
+          <h3>- Miguel M.</h3>
         </div>
-      </section>
+
+        <div class="testimonials-card">
+          <p>"Siempre confío en Aura para mis planes de entrenamiento y preparación de carreras. Me ayudan a mejorar mi técnica, a evitar lesiones y a superar mi marca personal de carrera en carrera."</p>
+          <div class="testimonials-img">
+            <img src="img/media/alicia.jpg" alt="Alicia d.C.">
+          </div>
+          <h3>- Alicia d.C.</h3>
+        </div>
+      </div>
+    </section>
+
   </main>
 
+  <!-- PIE DE PÁGINA -->
   <footer>
     <p>© 2025 By Aura</p>
     <nav class="legal">
@@ -256,110 +336,8 @@
     </nav>
   </footer>
 
-
-<script>
-
-  window.addEventListener("scroll", () => {
-    const nav = document.querySelector(".nav");
-    const headerHeight = document.querySelector("header").offsetHeight;
-
-    if (window.scrollY > headerHeight) {
-      nav.style.opacity = "0";
-      nav.style.pointerEvents = "none";
-      nav.style.transition = "opacity 0.3s ease";
-    } else {
-      nav.style.opacity = "1";
-      nav.style.pointerEvents = "auto";
-    }
-  });
-
-  (() => {
-    const body = document.body;
-    const openBtns = document.querySelectorAll('[data-open-modal]');
-
-    function openModal(modal) {
-      modal.classList.add('open');
-      modal.setAttribute('aria-hidden', 'false');
-      body.classList.add('modal-open');
-    }
-
-    function closeModal(modal) {
-      modal.classList.remove('open');
-      modal.setAttribute('aria-hidden', 'true');
-      body.classList.remove('modal-open');
-    }
-
-    openBtns.forEach(btn => {
-      btn.addEventListener('click', e => {
-        e.preventDefault();
-        const targetId = btn.dataset.target || 'contact-modal';
-        const modal = document.getElementById(targetId);
-        if (!modal) return;
-        openModal(modal);
-      });
-    });
-
-    document.querySelectorAll('.modal').forEach(modal => {
-      modal.addEventListener('click', e => {
-        if (e.target === modal) closeModal(modal);
-      });
-      modal.querySelectorAll('[data-close-modal]').forEach(closeBtn => {
-        closeBtn.addEventListener('click', () => closeModal(modal));
-      });
-    });
-
-    document.addEventListener('keydown', e => {
-      if (e.key === 'Escape') {
-        document.querySelectorAll('.modal.open').forEach(modal => closeModal(modal));
-      }
-    });
-  })();
-
-(() => {
-  const btn = document.querySelector('.nav-logo-btn');
-  const menu = document.getElementById('main-menu');
-
-  if (!btn || !menu) return;
-
-  function openMenu() {
-    menu.hidden = false;
-    menu.setAttribute('data-open', 'true');
-    btn.setAttribute('aria-expanded', 'true');
-  }
-  function closeMenu() {
-    menu.removeAttribute('data-open');
-    btn.setAttribute('aria-expanded', 'false');
-    
-    setTimeout(() => { menu.hidden = true; }, 180);
-  }
-  function toggleMenu() {
-    const isOpen = btn.getAttribute('aria-expanded') === 'true';
-    isOpen ? closeMenu() : openMenu();
-  }
-
-  btn.addEventListener('click', (e) => {
-    e.stopPropagation();
-    toggleMenu();
-  });
-
-  
-  document.addEventListener('click', (e) => {
-    if (menu.hidden) return;
-    if (!menu.contains(e.target) && e.target !== btn) closeMenu();
-  });
-
- 
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') closeMenu();
-  });
-
- 
-  menu.addEventListener('click', (e) => {
-    const link = e.target.closest('a');
-    if (link) closeMenu();
-  });
-})();
-</script>
+  <!-- SCRIPTS -->
+  <script src="app.js"></script>
 
 </body>
 </html>
