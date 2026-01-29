@@ -60,6 +60,18 @@ app.include_router(content.router)
 app.include_router(contact.router)
 
 
+# ENDPOINT TEMPORAL PARA CREAR ADMIN
+@app.post("/create-admin")
+def create_admin_endpoint():
+    """Endpoint temporal para crear el usuario admin por defecto. Elimínalo después de usarlo."""
+    from create_admin import create_admin
+    try:
+        create_admin()
+        return {"detail": "Usuario admin creado o ya existente."}
+    except Exception as e:
+        return {"error": str(e)}
+
+
 @app.get("/")
 def read_root():
     """Endpoint raíz de la API"""
