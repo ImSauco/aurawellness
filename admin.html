@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel Admin - By Aura</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="admin-styles.css">
+</head>
+<body>
+    <!-- MODAL LOGIN ADMIN -->
+    <div id="login-modal" class="admin-modal active">
+        <div class="admin-modal-content">
+            <h1>Panel Administrativo</h1>
+            <p>Ingresa tus credenciales para acceder</p>
+            
+            <form id="login-form">
+                <div class="form-group">
+                    <label for="login-email">Email:</label>
+                    <input type="email" id="login-email" placeholder="admin@byaura.com" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="login-password">Contraseña:</label>
+                    <input type="password" id="login-password" placeholder="••••••••" required>
+                </div>
+                
+                <button type="submit" class="btn btn-primary">Iniciar Sesión</button>
+                
+                <p id="login-error" class="error-message"></p>
+            </form>
+            
+            <div class="login-footer">
+                <a href="/">← Volver al sitio</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- PANEL ADMIN PRINCIPAL -->
+    <div id="admin-panel" class="admin-container">
+        <!-- Header -->
+        <header class="admin-header">
+            <div class="admin-header-top">
+                <h1>📊 Panel Administrativo - By Aura</h1>
+                <div class="admin-user-info">
+                    <span id="admin-name">Admin</span>
+                    <div class="admin-user-actions">
+                        <button id="change-password-btn" class="btn btn-secondary">Cambiar contraseña</button>
+                        <button id="logout-btn" class="btn btn-secondary">Cerrar Sesión</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Navegación estilo web principal -->
+            <nav class="nav admin-nav">
+                <button class="nav-logo-btn admin-menu-btn" aria-expanded="false" aria-controls="admin-menu" aria-label="Abrir menú">
+                    ☰ Menú
+                </button>
+
+                <div id="admin-menu" class="menu" hidden>
+                    <a href="#" class="tab-btn active" data-tab="dashboard">📊 Dashboard</a>
+                    <a href="#" class="tab-btn" data-tab="users">👥 Usuarios</a>
+                    <a href="#" class="tab-btn" data-tab="payments">💳 Pagos</a>
+                    <a href="#" class="tab-btn" data-tab="events">📅 Eventos</a>
+                    <a href="#" class="tab-btn" data-tab="products">🛍️ Productos</a>
+                    <a href="#" class="tab-btn" data-tab="messages">✉️ Mensajes</a>
+                </div>
+            </nav>
+        </header>
+
+        <!-- Contenido Principal -->
+        <main class="admin-main">
+            <!-- TAB 1: DASHBOARD -->
+            <section id="dashboard" class="tab-content active">
+                <h2>📊 Dashboard General</h2>
+                
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon">👥</div>
+                        <div class="stat-info">
+                            <span class="stat-label">Usuarios Totales</span>
+                            <span class="stat-number" id="stat-users">0</span>
+                        </div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-icon">💰</div>
+                        <div class="stat-info">
+                            <span class="stat-label">Ingresos Totales</span>
+                            <span class="stat-number" id="stat-revenue">$0</span>
+                        </div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-icon">⏳</div>
+                        <div class="stat-info">
+                            <span class="stat-label">Pagos Pendientes</span>
+                            <span class="stat-number" id="stat-pending">0</span>
+                        </div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-icon">✅</div>
+                        <div class="stat-info">
+                            <span class="stat-label">Pagos Completados</span>
+                            <span class="stat-number" id="stat-completed">0</span>
+                        </div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-icon">📅</div>
+                        <div class="stat-info">
+                            <span class="stat-label">Eventos Activos</span>
+                            <span class="stat-number" id="stat-events">0</span>
+                        </div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-icon">📈</div>
+                        <div class="stat-info">
+                            <span class="stat-label">Total Pagos</span>
+                            <span class="stat-number" id="stat-total-payments">0</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dashboard-actions">
+                    <button class="btn btn-primary" onclick="switchTab('users')">Gestionar Usuarios</button>
+                    <button class="btn btn-primary" onclick="switchTab('payments')">Ver Pagos</button>
+                    <button class="btn btn-primary" onclick="switchTab('events')">Gestionar Eventos</button>
+                </div>
+            </section>
+
+            <!-- TAB 2: USUARIOS -->
+            <section id="users" class="tab-content">
+                <h2>👥 Gestión de Usuarios</h2>
+                
+                <div class="section-actions">
+                    <input type="text" id="search-users" class="search-input" placeholder="🔍 Buscar usuario...">
+                    <button class="btn btn-primary" onclick="abrirCrearUsuarioModal()">+ Crear Usuario</button>
+                    <button class="btn btn-primary" onclick="cargarUsuarios()">🔄 Recargar</button>
+                </div>
+
+                <div class="table-container">
+                    <table class="admin-table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Email</th>
+                                <th>Nombre</th>
+                                <th>Rol</th>
+                                <th>Estado</th>
+                                <th>Registrado</th>
+                            </tr>
+                        </thead>
+                        <tbody id="users-tbody">
+                            <tr>
+                                <td colspan="6" class="loading">Cargando usuarios...</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Modal para editar usuario -->
+                <div id="edit-user-modal" class="modal">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h2>Editar Usuario</h2>
+                            <button class="modal-close" onclick="cerrarModalUsuario()">✕</button>
+                        </div>
+                        
+                        <form id="edit-user-form">
+                            <input type="hidden" id="edit-user-id">
+                            
+                            <div class="form-group">
+                                <label>Email:</label>
+                                <input type="email" id="edit-user-email" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label>Nombre Completo:</label>
+                                <input type="text" id="edit-user-name">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label>Rol:</label>
+                                <select id="edit-user-role">
+                                    <option value="user">Usuario</option>
+                                    <option value="admin">Administrador</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-actions">
+                                <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+                                <button type="button" class="btn btn-warning" onclick="cambiarRol(Number(document.getElementById('edit-user-id').value))">Cambiar Rol</button>
+                                <button type="button" class="btn btn-secondary" onclick="toggleActivo(Number(document.getElementById('edit-user-id').value))">Activar/Desactivar</button>
+                                <button type="button" class="btn btn-danger" onclick="eliminarUsuario(Number(document.getElementById('edit-user-id').value))">Eliminar</button>
+                                <button type="button" class="btn btn-secondary" onclick="cerrarModalUsuario()">Cancelar</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Modal para crear usuario -->
+                <div id="create-user-modal" class="modal">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h2>Crear Usuario</h2>
+                            <button class="modal-close" onclick="cerrarModalCrearUsuario()">✕</button>
+                        </div>
+
+                        <form id="create-user-form">
+                            <div class="form-group">
+                                <label>Email:</label>
+                                <input type="email" id="create-user-email" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Nombre Completo:</label>
+                                <input type="text" id="create-user-name">
+                            </div>
+
+                            <div class="form-group">
+                                <label>Contraseña:</label>
+                                <input type="password" id="create-user-password" minlength="8" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Rol:</label>
+                                <select id="create-user-role">
+                                    <option value="user">Usuario</option>
+                                    <option value="admin">Administrador</option>
+                                </select>
+                            </div>
+
+                            <div class="form-actions">
+                                <button type="submit" class="btn btn-primary">Crear Usuario</button>
+                                <button type="button" class="btn btn-secondary" onclick="cerrarModalCrearUsuario()">Cancelar</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </section>
+
+            <!-- TAB 3: PAGOS -->
+            <section id="payments" class="tab-content">
+                <h2>💳 Gestión de Pagos</h2>
+                
+                <div class="section-actions">
+                    <select id="filter-status" class="filter-select">
+                        <option value="">Todos los estados</option>
+                        <option value="pending">Pendiente</option>
+                        <option value="completed">Completado</option>
+                        <option value="failed">Fallido</option>
+                        <option value="refunded">Reembolsado</option>
+                    </select>
+                    <button class="btn btn-primary" onclick="abrirCrearPagoModal()">+ Crear Pago</button>
+                    <button class="btn btn-primary" onclick="cargarPagos()">🔄 Recargar</button>
+                </div>
+
+                <div class="table-container">
+                    <table class="admin-table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Usuario</th>
+                                <th>Monto</th>
+                                <th>Estado</th>
+                                <th>Descripción</th>
+                                <th>Método</th>
+                                <th>Fecha</th>
+                            </tr>
+                        </thead>
+                        <tbody id="payments-tbody">
+                            <tr>
+                                <td colspan="7" class="loading">Cargando pagos...</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Modal para editar pago -->
+                <div id="edit-payment-modal" class="modal">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h2>Editar Pago</h2>
+                            <button class="modal-close" onclick="cerrarModalPago()">✕</button>
+                        </div>
+                        
+                        <form id="edit-payment-form">
+                            <input type="hidden" id="edit-payment-id">
+                            
+                            <div class="form-group">
+                                <label>Estado:</label>
+                                <select id="edit-payment-status">
+                                    <option value="pending">Pendiente</option>
+                                    <option value="completed">Completado</option>
+                                    <option value="failed">Fallido</option>
+                                    <option value="refunded">Reembolsado</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label>Descripción:</label>
+                                <textarea id="edit-payment-description" rows="3"></textarea>
+                            </div>
+                            
+                            <div class="form-actions">
+                                <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+                                <button type="button" class="btn btn-danger" onclick="eliminarPago(Number(document.getElementById('edit-payment-id').value))">Eliminar</button>
+                                <button type="button" class="btn btn-secondary" onclick="cerrarModalPago()">Cancelar</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Modal para crear pago -->
+                <div id="create-payment-modal" class="modal">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h2>Crear Pago</h2>
+                            <button class="modal-close" onclick="cerrarModalCrearPago()">✕</button>
+                        </div>
+
+                        <form id="create-payment-form">
+                            <div class="form-group">
+                                <label>Usuario:</label>
+                                <select id="create-payment-user" required></select>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>Monto ($):</label>
+                                    <input type="number" id="create-payment-amount" min="0.01" step="0.01" required>
+                                </div>
+
+                                <div class="form-group">
+                                    <label>Método:</label>
+                                    <input type="text" id="create-payment-method" placeholder="card, transfer...">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Descripción:</label>
+                                <textarea id="create-payment-description" rows="3"></textarea>
+                            </div>
+
+                            <div class="form-actions">
+                                <button type="submit" class="btn btn-primary">Crear Pago</button>
+                                <button type="button" class="btn btn-secondary" onclick="cerrarModalCrearPago()">Cancelar</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </section>
+
+            <!-- TAB 4: EVENTOS -->
+            <section id="events" class="tab-content">
+                <h2>📅 Gestión de Eventos</h2>
+                
+                <div class="section-actions">
+                    <button class="btn btn-primary" onclick="abrirCrearEventoModal()">+ Crear Evento</button>
+                    <button class="btn btn-primary" onclick="cargarEventos()">🔄 Recargar</button>
+                </div>
+
+                <div class="events-grid" id="events-grid">
+                    <div class="loading-placeholder">Cargando eventos...</div>
+                </div>
+
+                <!-- Modal para crear/editar evento -->
+                <div id="event-modal" class="modal">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h2 id="event-modal-title">Crear Evento</h2>
+                            <button class="modal-close" onclick="cerrarModalEvento()">✕</button>
+                        </div>
+                        
+                        <form id="event-form">
+                            <input type="hidden" id="event-id">
+                            
+                            <div class="form-group">
+                                <label>Título:</label>
+                                <input type="text" id="event-title" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label>Descripción:</label>
+                                <textarea id="event-description" rows="3"></textarea>
+                            </div>
+                            
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>Fecha Inicio:</label>
+                                    <input type="datetime-local" id="event-start" required>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label>Fecha Fin:</label>
+                                    <input type="datetime-local" id="event-end">
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label>Ubicación:</label>
+                                <input type="text" id="event-location">
+                            </div>
+                            
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>Capacidad:</label>
+                                    <input type="number" id="event-capacity" value="100" min="1" required>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label>Precio (€):</label>
+                                    <input type="number" id="event-price" value="0" min="0" step="0.01">
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label>URL de Imagen:</label>
+                                <input type="url" id="event-image">
+                            </div>
+                            
+                            <div class="form-actions">
+                                <button type="submit" class="btn btn-primary">Guardar Evento</button>
+                                <button type="button" class="btn btn-secondary" onclick="cerrarModalEvento()">Cancelar</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </section>
+
+            <!-- TAB 5: PRODUCTOS -->
+            <section id="products" class="tab-content">
+                <h2>🛍️ Gestión de Productos</h2>
+
+                <div class="section-actions">
+                    <button class="btn btn-primary" onclick="abrirCrearProductoModal()">+ Crear Producto</button>
+                    <button class="btn btn-primary" onclick="cargarProductos()">🔄 Recargar</button>
+                </div>
+
+                <div class="table-container">
+                    <table class="admin-table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Nombre</th>
+                                <th>SKU</th>
+                                <th>Orden</th>
+                                <th>Precio</th>
+                                <th>Stock</th>
+                                <th>Estado</th>
+                            </tr>
+                        </thead>
+                        <tbody id="products-tbody">
+                            <tr>
+                                <td colspan="7" class="loading">Cargando productos...</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Modal para crear producto -->
+                <div id="create-product-modal" class="modal">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h2>Crear Producto</h2>
+                            <button class="modal-close" onclick="cerrarModalCrearProducto()">✕</button>
+                        </div>
+
+                        <form id="create-product-form">
+                            <div class="form-group">
+                                <label>Nombre:</label>
+                                <input type="text" id="create-product-name" required>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>SKU:</label>
+                                    <input type="text" id="create-product-sku" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>Precio (€):</label>
+                                    <input type="number" id="create-product-price" min="0" step="0.01" required>
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>Stock:</label>
+                                    <input type="number" id="create-product-stock" min="0" step="1" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>Orden:</label>
+                                    <input type="number" id="create-product-order" min="0" step="1" value="0">
+                                </div>
+                                <div class="form-group">
+                                    <label>URL Imagen:</label>
+                                    <input type="url" id="create-product-image">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>Subir imagen:</label>
+                                <input type="file" id="create-product-image-file" accept="image/*">
+                            </div>
+
+                            <div class="form-group">
+                                <label>Descripción:</label>
+                                <textarea id="create-product-description" rows="3"></textarea>
+                            </div>
+
+                            <div class="form-group">
+                                <label>
+                                    <input type="checkbox" id="create-product-active" checked>
+                                    Activo
+                                </label>
+                            </div>
+
+                            <div class="form-actions">
+                                <button type="submit" class="btn btn-primary">Crear Producto</button>
+                                <button type="button" class="btn btn-secondary" onclick="cerrarModalCrearProducto()">Cancelar</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Modal para editar producto -->
+                <div id="edit-product-modal" class="modal">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h2>Editar Producto</h2>
+                            <button class="modal-close" onclick="cerrarModalEditarProducto()">✕</button>
+                        </div>
+
+                        <form id="edit-product-form">
+                            <input type="hidden" id="edit-product-id">
+
+                            <div class="form-group">
+                                <label>Nombre:</label>
+                                <input type="text" id="edit-product-name" required>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>SKU:</label>
+                                    <input type="text" id="edit-product-sku" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>Precio (€):</label>
+                                    <input type="number" id="edit-product-price" min="0" step="0.01" required>
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>Stock:</label>
+                                    <input type="number" id="edit-product-stock" min="0" step="1" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>Orden:</label>
+                                    <input type="number" id="edit-product-order" min="0" step="1" value="0">
+                                </div>
+                                <div class="form-group">
+                                    <label>URL Imagen:</label>
+                                    <input type="url" id="edit-product-image">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>Subir imagen:</label>
+                                <input type="file" id="edit-product-image-file" accept="image/*">
+                            </div>
+
+                            <div class="form-group">
+                                <label>Descripción:</label>
+                                <textarea id="edit-product-description" rows="3"></textarea>
+                            </div>
+
+                            <div class="form-group">
+                                <label>
+                                    <input type="checkbox" id="edit-product-active">
+                                    Activo
+                                </label>
+                            </div>
+
+                            <div class="form-actions">
+                                <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+                                <button type="button" class="btn btn-danger" onclick="eliminarProducto(Number(document.getElementById('edit-product-id').value))">Eliminar</button>
+                                <button type="button" class="btn btn-secondary" onclick="cerrarModalEditarProducto()">Cancelar</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </section>
+
+            <!-- TAB 6: MENSAJES -->
+            <section id="messages" class="tab-content">
+                <h2>✉️ Mensajes de Contacto</h2>
+
+                <div class="section-actions">
+                    <button class="btn btn-primary" onclick="cargarMensajes()">🔄 Recargar</button>
+                </div>
+
+                <div class="table-container">
+                    <table class="admin-table">
+                        <thead>
+                            <tr>
+                                <th>Fecha</th>
+                                <th>Nombre</th>
+                                <th>Email</th>
+                                <th>Asunto</th>
+                                <th>Origen</th>
+                                <th>Mensaje</th>
+                            </tr>
+                        </thead>
+                        <tbody id="messages-tbody">
+                            <tr>
+                                <td colspan="7" class="loading">Cargando mensajes...</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div id="message-modal" class="modal">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h2>Detalle del mensaje</h2>
+                            <button class="modal-close" onclick="cerrarModalMensaje()">✕</button>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Nombre:</label>
+                            <p id="message-modal-name"></p>
+                        </div>
+                        <div class="form-group">
+                            <label>Email:</label>
+                            <p id="message-modal-email"></p>
+                        </div>
+                        <div class="form-group">
+                            <label>Asunto:</label>
+                            <p id="message-modal-subject"></p>
+                        </div>
+                        <div class="form-group">
+                            <label>Origen:</label>
+                            <p id="message-modal-source"></p>
+                        </div>
+                        <div class="form-group">
+                            <label>Fecha:</label>
+                            <p id="message-modal-date"></p>
+                        </div>
+                        <div class="form-group">
+                            <label>Mensaje:</label>
+                            <p id="message-modal-body"></p>
+                        </div>
+
+                        <div class="form-actions">
+                            <button type="button" class="btn btn-secondary" onclick="cerrarModalMensaje()">Cerrar</button>
+                            <button type="button" class="btn btn-primary" id="message-modal-delete" onclick="borrarMensajeActivo()">Eliminar</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- MODAL: CAMBIAR CONTRASEÑA -->
+            <div id="change-password-modal" class="modal">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h2>Cambiar contraseña</h2>
+                        <button class="modal-close" onclick="cerrarModalCambiarPassword()">✕</button>
+                    </div>
+
+                    <form id="change-password-form">
+                        <div class="form-group">
+                            <label>Contraseña actual:</label>
+                            <input type="password" id="current-password" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Nueva contraseña:</label>
+                            <input type="password" id="new-password" minlength="8" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Confirmar nueva contraseña:</label>
+                            <input type="password" id="confirm-new-password" minlength="8" required>
+                        </div>
+
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-primary">Guardar</button>
+                            <button type="button" class="btn btn-secondary" onclick="cerrarModalCambiarPassword()">Cancelar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+        </main>
+    </div>
+
+    <script src="admin.js"></script>
+</body>
+</html>

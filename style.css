@@ -231,7 +231,7 @@ header {
   display: grid;
   align-content: center;
   justify-items: start;
-  min-block-size: min(100dvh, 760px);
+  min-block-size: 100dvh;
   color: rgb(255, 246, 227);
   text-align: left;
   padding: var(--space);
@@ -280,7 +280,7 @@ header button {
   font-weight: 600;
   padding: 1rem 2.5rem;
   border-radius: 50px;
-  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
   display: inline-block;
   cursor: pointer;
   margin: 1rem 2rem;
@@ -322,10 +322,12 @@ header button:hover {
   position: relative;
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
   animation: slideUp 0.4s ease-out;
+  color: var(--brand-dark);
 }
 
 .modal-content h2 {
   margin: 0 0 1.5rem 0;
+  color: var(--brand-dark) !important;
 }
 
 .modal-content form {
@@ -341,6 +343,8 @@ header button:hover {
   border-radius: 8px;
   font-family: inherit;
   transition: border-color 0.2s ease;
+  color: var(--brand-dark);
+  background-color: #fff;
 }
 
 .modal-content input:focus,
@@ -396,6 +400,30 @@ main {
   overflow: hidden;
 }
 
+/* ===== SCROLL REVEAL ===== */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+  will-change: opacity, transform;
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+
+
+
 /* ========================================
    SECCIÓN: ABOUT (Quiénes somos)
    ======================================== */
@@ -424,12 +452,7 @@ main {
   overflow: hidden;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
   min-height: 56vh;
-  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-}
-
-.about-card:hover {
-  box-shadow: 0 16px 35px rgba(0, 0, 0, 0.15);
-  transform: translateY(-8px);
+  transition: none;
 }
 
 .about-card img {
@@ -535,19 +558,19 @@ main {
 .companies-img img {
   width: 100%; border-radius: 12px; box-shadow: 0 4px 8px rgba(0,0,0,0.2);
 }
-.companies button{
+.companies .btn{
   background: linear-gradient(135deg, rgb(1, 1, 50), rgb(20, 10, 70));
   color: rgb(255, 246, 227);
   text-decoration: none;
   font-weight: 600;
   padding: 1rem 2.5rem;
   border-radius: 50px;
-  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
   display: inline-block;
   box-shadow: 0 4px 15px rgba(100, 1, 30, 0.3);
   border: 1px solid rgba(100, 1, 30, 0.2);
 }
-.companies button:hover{
+.companies .btn:hover{
   background: linear-gradient(135deg, rgb(20, 10, 70), rgb(40, 1, 50));
   transform: translateY(-4px);
   box-shadow: 0 12px 30px rgba(100, 1, 30, 0.4);
@@ -676,13 +699,8 @@ main {
   height: clamp(320px, 60vh, 560px);
   position: relative; overflow: hidden; scroll-snap-align: start;
   border-radius: 12px;
-  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  transition: none;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-}
-
-.scroll-card:hover {
-  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.2);
-  transform: translateY(-6px);
 }
 .scroll-card img{
   width: 100%; height: 100%;
@@ -719,14 +737,8 @@ main {
   background-color: var(--brand-dark);
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
   padding: 1.25rem;
-  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  transition: none;
   border: 1px solid rgba(255, 255, 255, 0.08);
-}
-
-.news-card:hover {
-  box-shadow: 0 16px 40px rgba(100, 1, 30, 0.35);
-  transform: translateY(-8px);
-  background-color: rgb(20, 10, 70);
 }
 .news-card img{
   width: 100%; height: auto; border-radius: 12px; margin: 0 0 1rem 0;
@@ -755,7 +767,7 @@ main {
   font-weight: 600;
   padding: 1rem 2.5rem;
   border-radius: 50px;
-  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
   display: inline-block;
   box-shadow: 0 4px 15px rgba(100, 1, 30, 0.3);
   border: 1px solid rgba(100, 1, 30, 0.2);
@@ -765,6 +777,34 @@ main {
   background: linear-gradient(135deg, rgb(20, 10, 70), rgb(40, 1, 50));
   transform: translateY(-4px);
   box-shadow: 0 12px 30px rgba(100, 1, 30, 0.4);
+}
+
+/* ===== EVENTS PAGE (eventos.html) ===== */
+.events-page .events-header {
+  width: min(1200px, 92%);
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  text-align: left;
+  padding: 2rem 0 1rem 0;
+}
+
+.events-page .events-header .nav-logo {
+  display: block;
+  margin: 0;
+  width: clamp(140px, 22vw, 220px);
+  height: auto;
+}
+
+.events-page .news h2 {
+  text-align: left;
+  padding-top: 0;
+}
+
+.events-page .news-container {
+  gap: 2rem;
 }
 
 
@@ -827,10 +867,13 @@ main {
 
 /* --- BOTTOM: cards de productos --- */
 .shop-bottom {
-  display: grid;
-  grid-template-columns: 1fr;
+  display: flex;
   gap: 1.5rem;
   margin: 2rem;
+  overflow-x: auto;
+  flex-wrap: nowrap;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
 }
 
 .shop-card {
@@ -840,21 +883,21 @@ main {
   text-align: center;
   color: rgb(255, 246, 227);
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
-  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  transition: none;
   border: 1px solid rgba(255, 255, 255, 0.08);
-}
-
-.shop-card:hover {
-  box-shadow: 0 16px 40px rgba(100, 1, 30, 0.4);
-  transform: translateY(-8px);
-  border-color: rgba(100, 1, 30, 0.4);
+  flex: 0 0 clamp(220px, 70vw, 360px);
+  scroll-snap-align: start;
 }
 
 .shop-card img {
   width: 100%;
+  height: auto;
+  aspect-ratio: auto;
   border-radius: 12px;
   margin-bottom: 0.8rem;
-  object-fit: cover;
+  object-fit: contain;
+  object-position: center;
+  display: block;
 }
 
 .shop-card h3 {
@@ -876,7 +919,7 @@ main {
   font-weight: 600;
   padding: 0.8rem 1.8rem;
   border-radius: 50px;
-  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease, border-color 0.2s ease;
   display: inline-block;
   border: 1px solid rgba(255, 246, 227, 0.3);
 }
@@ -891,19 +934,25 @@ main {
 /* --- DESKTOP --- */
 @media (min-width: 900px) {
   .shop-bottom {
-    grid-template-columns: 1fr 1fr;
     gap: 2rem;
+    max-width: 50vw;
+    margin: 2rem auto;
   }
 
-  .shop-card img {
-    height: 420px;
-    object-fit: cover;
+  .shop-card {
+    flex: 0 0 clamp(220px, 24vw, 320px);
   }
 }
 
 /* ===== TESTIMONIALS SECTION ===== */
 
-.testimonials { z-index: 1; background-color: rgb(255, 246, 227);padding: 0 2rem; width: min(1200px, 92%); margin: 0 auto; }
+.testimonials {
+  z-index: 1;
+  background-color: rgb(255, 246, 227);
+  padding: 3rem 0;
+  width: 100%;
+  margin: 0;
+}
 .testimonials-card { 
   flex: 0 0 clamp(70%, 380px, 90%);
   aspect-ratio: 4 / 3;
@@ -911,7 +960,7 @@ main {
   border-radius: 12px;
   scroll-snap-align: start;
   padding: 1.75rem;
-  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  transition: none;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
   border: 1px solid rgba(255, 255, 255, 0.1);
 
@@ -920,18 +969,18 @@ main {
   justify-content: space-between; 
 }
 
-.testimonials-card:hover {
-  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.3);
-  transform: translateY(-8px);
-  border-color: rgba(255, 255, 255, 0.25);
-}
-
 .testimonials h3 {  text-align: center;
   font-size: 1.3rem; 
   color: rgb(255, 246, 227);
   margin-bottom: 0.5rem;}
 .testimonials h2 {
-  text-align: left; font-size: 1.5rem; color: var(--brand-dark); margin: 1rem 1rem 1rem 0;
+  text-align: left;
+  font-size: 1.5rem;
+  color: var(--brand-dark);
+  margin: 0 0 1rem 0;
+  width: min(1200px, 92%);
+  margin-left: auto;
+  margin-right: auto;
 }
 .testimonials p{
   text-align: justify;
@@ -962,7 +1011,9 @@ main {
   overflow-x: auto; scroll-snap-type: x mandatory;
   -webkit-overflow-scrolling: touch;
   padding: 0 1rem var(--space);
-  width: 100%; height: auto; flex-wrap: nowrap; 
+  width: min(1200px, 92%);
+  margin: 0 auto;
+  height: auto; flex-wrap: nowrap; 
 }
 @media (min-width: 1024px) {
   .testimonials-container {
@@ -1012,6 +1063,26 @@ footer p {
 }
 
 .legal a:hover {
+  color: rgb(255, 200, 100);
+  text-decoration: underline;
+}
+
+.legal a.footer-admin {
+  background: none;
+  color: rgb(255, 246, 227);
+  padding: 0;
+  border-radius: 0;
+  font-weight: 400;
+  text-decoration: none;
+  display: inline;
+  box-shadow: none;
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.legal a.footer-admin:hover {
+  background: none;
+  transform: none;
+  box-shadow: none;
   color: rgb(255, 200, 100);
   text-decoration: underline;
 }

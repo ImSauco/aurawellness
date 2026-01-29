@@ -51,13 +51,12 @@
   <div id="contact-modal" class="modal" aria-hidden="true" role="dialog" aria-modal="true">
     <div class="modal-content">
       <button class="close" type="button" aria-label="Cerrar" data-close-modal>×</button>
-      <h2>Contacto</h2>
-      <form action="https://formspree.io/f/xanrbqnr" method="POST">
+      <h2>Preguntar talla</h2>
+      <form action="#" method="POST" data-contact-form data-source="contacto-general">
         <input type="text" name="nombre" placeholder="Tu nombre" required>
         <input type="email" name="email" placeholder="Tu correo" required>
         <textarea name="mensaje" placeholder="Tu mensaje" required></textarea>
         <input type="hidden" name="_subject" value="Nuevo mensaje desde la web By Aura">
-        <input type="hidden" name="_next" value="https://byaurawell.com/formsubmit.html">
         <button type="submit">Enviar</button>
       </form>
     </div>
@@ -147,12 +146,11 @@
             <div class="modal-content">
               <button class="close" type="button" aria-label="Cerrar" data-close-modal>×</button>
               <h2>Solicita tu presupuesto</h2>
-              <form action="https://formspree.io/f/xanrbqnr" method="POST">
+              <form action="#" method="POST" data-contact-form data-source="presupuesto-empresas">
                 <input type="text" name="nombre" placeholder="Tu nombre" required>
                 <input type="email" name="email" placeholder="Tu correo" required>
                 <textarea name="mensaje" placeholder="Tu mensaje" required></textarea>
                 <input type="hidden" name="_subject" value="Solicitud presupuesto empresas – By Aura">
-                <input type="hidden" name="_next" value="https://byaurawell.com/formsubmit.html">
                 <button type="submit">Enviar</button>
               </form>
             </div>
@@ -160,6 +158,7 @@
         </div>
       </div>
     </section>
+
 
     <!-- SECCIÓN: COLABORACIONES -->
     <section class="colabs" id="colabs">
@@ -172,6 +171,7 @@
       </div>
     </section>
 
+
     <!-- SECCIÓN: SERVICIOS ADICIONALES -->
     <section class="additional-services" id="additional-services">
       <h2>Servicios adicionales</h2>
@@ -183,6 +183,7 @@
         </div>
       </div>
     </section>
+
 
     <!-- SECCIÓN: SERVICIOS A PARTICULARES -->
     <section class="scroll">
@@ -224,16 +225,16 @@
 
     <!-- SECCIÓN: ÚLTIMOS EVENTOS -->
     <section class="news" id="news">
-      <h2>ÚLTIMOS EVENTOS</h2>
+      <h2 id="events-title">ÚLTIMOS EVENTOS</h2>
       <div class="news-container">
         <div class="news-card">
           <img src="img/media/Carreraempresas.jpeg" alt="Carrera Empresas">
           <div class="news-texto">
             <h3>Carrera de las Empresas 2025</h3>
-            <p>Hoy hemos vivido una jornada realmente especial participando en la Carrera de las Empresas en Madrid y Barcelona junto a AstraZeneca, un evento que ha reunido a 40 corredores en total en torno al deporte, la salud y el trabajo en equipo.<br><br>Desde By Aura, nos hemos encargado de toda la organización y logística del evento, asegurándonos de que cada detalle estuviera perfectamente coordinado para que los participantes pudieran disfrutar al máximo de la experiencia.<br><br>Durante las semanas previas, hemos estado trabajando en cada detalle: desde la búsqueda del local, hasta la preparación de un desayuno nutritivo para los empleados, así como la planificación integral del día del evento para que todo saliera a la perfección.<br><br>El día de la carrera, nuestros entrenadores lideraron un calentamiento dinámico y motivador, preparando a los corredores para el desafío que tenían por delante. A lo largo del recorrido, brindamos apoyo y acompañamiento constante, fomentando un ambiente de camaradería y superación personal.<br><br>El ambiente durante la carrera fue extraordinario, cargado de energía, motivación y compañerismo. Este tipo de iniciativas son fundamentales no solo para fomentar la actividad física, sino también para reforzar los vínculos entre los empleados y promover una cultura corporativa más saludable y cohesionada.<br><br>Al finalizar la prueba, compartimos un momento distendido durante el desayuno, donde no faltaron las risas y la sensación de haber vivido una experiencia conjunta muy positiva.<br><br>Eventos como este contribuyen de manera directa a crear un entorno laboral más dinámico, saludable y comprometido, alineado con los valores de bienestar y equipo que impulsamos.</p>
+            <p id="events-body">Hoy hemos vivido una jornada realmente especial participando en la Carrera de las Empresas en Madrid y Barcelona junto a AstraZeneca, un evento que ha reunido a 40 corredores en total en torno al deporte, la salud y el trabajo en equipo.<br><br>Desde By Aura, nos hemos encargado de toda la organización y logística del evento, asegurándonos de que cada detalle estuviera perfectamente coordinado para que los participantes pudieran disfrutar al máximo de la experiencia.<br><br>Durante las semanas previas, hemos estado trabajando en cada detalle: desde la búsqueda del local, hasta la preparación de un desayuno nutritivo para los empleados, así como la planificación integral del día del evento para que todo saliera a la perfección.<br><br>El día de la carrera, nuestros entrenadores lideraron un calentamiento dinámico y motivador, preparando a los corredores para el desafío que tenían por delante. A lo largo del recorrido, brindamos apoyo y acompañamiento constante, fomentando un ambiente de camaradería y superación personal.<br><br>El ambiente durante la carrera fue extraordinario, cargado de energía, motivación y compañerismo. Este tipo de iniciativas son fundamentales no solo para fomentar la actividad física, sino también para reforzar los vínculos entre los empleados y promover una cultura corporativa más saludable y cohesionada.<br><br>Al finalizar la prueba, compartimos un momento distendido durante el desayuno, donde no faltaron las risas y la sensación de haber vivido una experiencia conjunta muy positiva.<br><br>Eventos como este contribuyen de manera directa a crear un entorno laboral más dinámico, saludable y comprometido, alineado con los valores de bienestar y equipo que impulsamos.</p>
           </div>
           <div class="news-boton">
-            <a href="eventos.html" class="btn-ver-todos">Ver todos los eventos</a>
+            <a href="eventos.html" id="events-cta" class="btn-ver-todos">Ver todos los eventos</a>
           </div>
         </div>
       </div>
@@ -241,55 +242,13 @@
 
     <!-- SECCIÓN: TIENDA -->
     <section class="shop" id="shop">
-      <h2>BY AURA COLLECTION</h2>
+      <h2 id="shop-title">BY AURA COLLECTION</h2>
       <div class="shop-container">
         <div class="shop-top">
-          <img src="img/media/blacktback.jpeg" alt="By Aura Collection portada">
+          <img id="shop-hero-image" src="img/media/blacktback.jpeg" alt="By Aura Collection portada">
         </div>
-        <div class="shop-bottom">
-          <!-- PRODUCTO 1 -->
-          <div class="shop-card">
-            <img src="img/media/blacktfront.jpeg" alt="Camiseta Black Aura Tee">
-            <h3>Black Aura Tee</h3>
-            <a class="btn-shop" data-open-modal data-target="contact-modal-blacktee">Preguntar disponibilidad</a>
-
-            <div id="contact-modal-blacktee" class="modal" aria-hidden="true" role="dialog" aria-modal="true">
-              <div class="modal-content">
-                <button class="close" type="button" aria-label="Cerrar" data-close-modal>×</button>
-                <h2>Consulta Black Aura Tee</h2>
-                <form action="https://formspree.io/f/xanrbqnr" method="POST">
-                  <input type="text" name="nombre" placeholder="Tu nombre" required>
-                  <input type="email" name="email" placeholder="Tu correo" required>
-                  <textarea name="mensaje" placeholder="Tu mensaje" required></textarea>
-                  <input type="hidden" name="_subject" value="Consulta Black Aura Tee desde la web By Aura">
-                  <input type="hidden" name="_next" value="https://byaurawell.com/formsubmit.html">
-                  <button type="submit">Enviar</button>
-                </form>
-              </div>
-            </div>
-          </div>
-
-          <!-- PRODUCTO 2 -->
-          <div class="shop-card">
-            <img src="img/media/navytfront.jpeg" alt="Camiseta Navy Aura Tee">
-            <h3>Navy Aura Tee</h3>
-            <a class="btn-shop" data-open-modal data-target="contact-modal-navytee">Preguntar disponibilidad</a>
-
-            <div id="contact-modal-navytee" class="modal" aria-hidden="true" role="dialog" aria-modal="true">
-              <div class="modal-content">
-                <button class="close" type="button" aria-label="Cerrar" data-close-modal>×</button>
-                <h2>Consulta Navy Aura Tee</h2>
-                <form action="https://formspree.io/f/xanrbqnr" method="POST">
-                  <input type="text" name="nombre" placeholder="Tu nombre" required>
-                  <input type="email" name="email" placeholder="Tu correo" required>
-                  <textarea name="mensaje" placeholder="Tu mensaje" required></textarea>
-                  <input type="hidden" name="_subject" value="Consulta Navy Aura Tee desde la web By Aura">
-                  <input type="hidden" name="_next" value="https://byaurawell.com/formsubmit.html">
-                  <button type="submit">Enviar</button>
-                </form>
-              </div>
-            </div>
-          </div>
+        <div class="shop-bottom" id="shop-products">
+          <!-- Productos se cargan desde la API -->
         </div>
       </div>
     </section>
@@ -332,7 +291,8 @@
     <nav class="legal">
       <a href="aviso-legal.html">Aviso Legal</a> | 
       <a href="privacidad.html">Política de Privacidad</a> | 
-      <a href="devoluciones.html">Política de Devoluciones</a>
+      <a href="devoluciones.html">Política de Devoluciones</a> | 
+      <a href="admin.html" class="footer-admin"> Panel Admin</a>
     </nav>
   </footer>
 
