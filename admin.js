@@ -4,7 +4,9 @@
  */
 
 // ===== CONFIGURACIÓN =====
-const API_BASE = "http://localhost:8000"; // Cambiar en producción
+const API_BASE = ['localhost', '127.0.0.1'].includes(window.location.hostname)
+  ? 'http://localhost:8000'
+  : 'https://aurawellness.onrender.com'; 
 let TOKEN = null;
 let CURRENT_USER = null;
 let MESSAGES_CACHE = new Map();
