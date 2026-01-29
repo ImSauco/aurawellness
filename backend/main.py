@@ -47,6 +47,18 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+
+# ENDPOINT TEMPORAL PARA CREAR ADMIN (antes de archivos estáticos)
+@app.post("/api/create-admin")
+def create_admin_endpoint():
+    """Endpoint temporal para crear el usuario admin por defecto. Elimínalo después de usarlo."""
+    from create_admin import create_admin
+    try:
+        create_admin()
+        return {"detail": "Usuario admin creado o ya existente."}
+    except Exception as e:
+        return {"error": str(e)}
+
 # Archivos estáticos (uploads)
 app.mount("/uploads", StaticFiles(directory=str(UPLOADS_DIR)), name="uploads")
 
@@ -60,16 +72,6 @@ app.include_router(content.router)
 app.include_router(contact.router)
 
 
-# ENDPOINT TEMPORAL PARA CREAR ADMIN
-@app.post("/create-admin")
-def create_admin_endpoint():
-    """Endpoint temporal para crear el usuario admin por defecto. Elimínalo después de usarlo."""
-    from create_admin import create_admin
-    try:
-        create_admin()
-        return {"detail": "Usuario admin creado o ya existente."}
-    except Exception as e:
-        return {"error": str(e)}
 
 
 @app.get("/")
