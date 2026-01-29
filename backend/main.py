@@ -39,8 +39,8 @@ app.add_middleware(
         "http://localhost:5500",
         "http://127.0.0.1:5500",
         "http://localhost",
-        "https://byaura.com",
-        "https://www.byaura.com"
+        "https://byaurawell.com",
+        "https://www.byaurawell.com"
     ],
     allow_credentials=True,
     allow_methods=["*"],
