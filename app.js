@@ -71,7 +71,7 @@ window.addEventListener('scroll', () => {
 // ===== CONTENIDO DINÁMICO (Eventos + Tienda) =====
 const API_BASE = ['localhost', '127.0.0.1'].includes(window.location.hostname)
   ? 'http://localhost:8000'
-  : 'https://api.byaura.com';
+  : 'https://aurawellness.onrender.com';
 
 async function loadWebContent() {
   try {
