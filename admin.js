@@ -983,6 +983,9 @@ async function cargarProductos() {
     tbody.innerHTML = productos.map(producto => `
       <tr class="message-row" onclick="abrirEditarProducto(${producto.id})">
         <td>#${producto.id}</td>
+        <td>
+          ${producto.image_url ? `<img src="${producto.image_url}" alt="Imagen producto" style="max-width:60px;max-height:60px;object-fit:contain;border-radius:6px;box-shadow:0 1px 4px #0002;">` : '<span style="color:#aaa">Sin imagen</span>'}
+        </td>
         <td>${producto.name}</td>
         <td>${producto.sku}</td>
         <td>${producto.sort_order ?? 0}</td>

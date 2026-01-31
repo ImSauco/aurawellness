@@ -688,16 +688,25 @@ main {
 .scroll h3 { text-align: left; font-size: 1.5rem; color: var(--brand-dark); margin: 1rem 1rem 1rem 0; }
 
 .scroll-container{
-  display:flex; gap: clamp(1rem, 2.5vw, 2.5rem);
-  overflow-x: auto; scroll-snap-type: x mandatory;
+  display: flex;
+  gap: clamp(1rem, 2.5vw, 2.5rem);
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
   -webkit-overflow-scrolling: touch;
   padding: 0 1rem var(--space);
-  width: 100%; height: auto; flex-wrap: nowrap;
+  width: 100%;
+  height: 100%;
+  flex-wrap: nowrap;
+  overflow-y: visible;
 }
 .scroll-card{
   flex: 0 0 clamp(85%, 420px, 100%);
-  height: clamp(320px, 60vh, 560px);
-  position: relative; overflow: hidden; scroll-snap-align: start;
+  height: 100%;
+  min-height: 320px;
+  max-height: 560px;
+  position: relative;
+  overflow: hidden;
+  scroll-snap-align: start;
   border-radius: 12px;
   transition: none;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
@@ -955,7 +964,9 @@ main {
 }
 .testimonials-card { 
   flex: 0 0 clamp(70%, 380px, 90%);
-  aspect-ratio: 4 / 3;
+  height: 100%;
+  min-height: 320px;
+  max-height: 560px;
   background: linear-gradient(135deg, rgb(100, 1, 30), rgb(140, 20, 60));
   border-radius: 12px;
   scroll-snap-align: start;
@@ -963,10 +974,9 @@ main {
   transition: none;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
   border: 1px solid rgba(255, 255, 255, 0.1);
-
   display: flex;
   flex-direction: column;
-  justify-content: space-between; 
+  justify-content: space-between;
 }
 
 .testimonials h3 {  text-align: center;
@@ -1007,13 +1017,17 @@ main {
   padding: 0 1rem 1rem 1rem;
 }
 .testimonials-container{ 
-  display:flex; gap: var(--gap);
-  overflow-x: auto; scroll-snap-type: x mandatory;
+  display: flex;
+  gap: var(--gap);
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
   -webkit-overflow-scrolling: touch;
   padding: 0 1rem var(--space);
   width: min(1200px, 92%);
   margin: 0 auto;
-  height: auto; flex-wrap: nowrap; 
+  height: 100%;
+  flex-wrap: nowrap;
+  overflow-y: visible;
 }
 @media (min-width: 1024px) {
   .testimonials-container {
