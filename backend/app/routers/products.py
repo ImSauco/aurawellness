@@ -56,7 +56,7 @@ def list_public_products(
     limit: int = Query(50, ge=1, le=200),
     db: Session = Depends(get_db)
 ):
-    return (
+    products = (
         db.query(Product)
         .filter(Product.is_active == True)
         .order_by(Product.sort_order.asc(), Product.created_at.asc())
@@ -64,6 +64,18 @@ def list_public_products(
         .limit(limit)
         .all()
     )
+    # Construir URL absoluta para la imagen si es necesario
+    from fastapi import Request
+    def build_image_url(product):
+        if product.image_url and not product.image_url.startswith("http"):
+            # Asumimos que la imagen está en /uploads/
+            base_url = "https://aurawellness.onrender.com"  # Cambia esto si usas otro dominio
+            return f"{base_url}/uploads/{product.image_url}"
+        return product.image_url
+
+    for p in products:
+        p.image_url = build_image_url(p)
+    return products
 
 
 @router.post("/upload-image")

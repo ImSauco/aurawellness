@@ -675,6 +675,10 @@ main {
   margin: 0;
   line-height: 1.6;
 }
+.additional-services a {
+    color: rgb(100, 1, 30);
+    text-decoration: none;
+}
 
 @media (min-width: 900px) {
   .additional-services-container {
