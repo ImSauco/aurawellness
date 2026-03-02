@@ -786,6 +786,23 @@ main {
   margin: 0; font-size: 0.95rem; color: rgb(255, 246, 227);
   text-align: left; text-shadow: none;
 }
+
+.news-card .news-texto ul,
+.news-card .news-texto li {
+  color: rgb(255, 246, 227);
+  font-size: 0.95rem;
+  text-align: left;
+  text-shadow: none;
+}
+
+.news-card .news-texto ul {
+  margin: 0.6rem 0 1rem 1.2rem;
+  padding-left: 1rem;
+}
+
+.news-card .news-texto li {
+  margin: 0.25rem 0;
+}
 .news-boton {
   text-align: center;
   margin-top: 2rem;
@@ -856,7 +873,7 @@ main {
 .shop-container {
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: 0;
 }
 
 /* --- TOP: imagen de colección + título encima --- */
@@ -864,7 +881,7 @@ main {
   position: relative;
   width: 100%;
   overflow: hidden;
-  max-height: 100vh;
+  min-height: clamp(560px, 82vh, 860px);
 }
 .shop-top::before {
   content: "";
@@ -873,7 +890,20 @@ main {
   background: rgba(0,0,0,0.5);
   z-index: 1;
 }
-.shop-top img {
+.shop-top::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 45%;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0));
+  z-index: 1;
+  pointer-events: none;
+}
+.shop-top > #shop-hero-image {
+  position: absolute;
+  inset: 0;
   z-index: 0;
   width: 100%;
   height: 100%;
@@ -898,35 +928,42 @@ main {
 
 /* --- BOTTOM: cards de productos --- */
 .shop-bottom {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
   display: flex;
-  gap: 1.5rem;
-  margin: 2rem;
-  overflow-x: auto;
-  flex-wrap: nowrap;
-  scroll-snap-type: x mandatory;
-  -webkit-overflow-scrolling: touch;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.9rem;
+  margin: 0;
+  width: min(420px, 90%);
+  padding: 0;
+  overflow: hidden;
 }
 
 .shop-card {
-  background: linear-gradient(135deg, rgb(1, 1, 50), rgb(20, 10, 70));
+  background: transparent;
   border-radius: 12px;
-  padding: 1.25rem;
+  padding: 0.75rem;
   text-align: center;
   color: rgb(255, 246, 227);
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
   transition: none;
   border: 1px solid rgba(255, 255, 255, 0.08);
-  flex: 0 0 clamp(220px, 70vw, 360px);
-  scroll-snap-align: start;
+  width: 100%;
+  max-width: 360px;
 }
 
 .shop-card img {
   width: 100%;
-  height: auto;
-  aspect-ratio: auto;
+  height: clamp(120px, 20vh, 170px);
+  aspect-ratio: 4 / 5;
   border-radius: 12px;
   margin-bottom: 0.8rem;
-  object-fit: contain;
+  object-fit: cover;
   object-position: center;
   display: block;
 }
@@ -965,13 +1002,32 @@ main {
 /* --- DESKTOP --- */
 @media (min-width: 900px) {
   .shop-bottom {
+    left: 0;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 100%;
+    flex-direction: row;
+    overflow-x: auto;
+    overflow-y: hidden;
+    flex-wrap: nowrap;
+    scroll-snap-type: x mandatory;
     gap: 2rem;
-    max-width: 50vw;
-    margin: 2rem auto;
+    padding: 0 clamp(2rem, 7vw, 6rem);
+    scroll-padding-inline: clamp(2rem, 7vw, 6rem);
+    -webkit-overflow-scrolling: touch;
   }
 
   .shop-card {
+    width: auto;
+    max-width: none;
+    padding: 1rem;
     flex: 0 0 clamp(220px, 24vw, 320px);
+    scroll-snap-align: start;
+  }
+
+  .shop-card img {
+    height: clamp(170px, 30vw, 250px);
   }
 }
 
@@ -986,9 +1042,9 @@ main {
 }
 .testimonials-card { 
   flex: 0 0 clamp(70%, 380px, 90%);
-  height: 100%;
+  height: auto;
   min-height: 320px;
-  max-height: 560px;
+  max-height: none;
   background: linear-gradient(135deg, rgb(100, 1, 30), rgb(140, 20, 60));
   border-radius: 12px;
   scroll-snap-align: start;
@@ -999,6 +1055,7 @@ main {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  overflow: hidden;
 }
 
 .testimonials h3 {  text-align: center;
@@ -1020,6 +1077,7 @@ main {
   color: rgb(255, 246, 227);
   margin: 0;
   flex-grow: 1;
+  overflow-wrap: anywhere;
 }
 .testimonial-bottom {
   display: flex;
@@ -1037,6 +1095,7 @@ main {
 }
 .testimonials-img {
   padding: 0 1rem 1rem 1rem;
+  flex-shrink: 0;
 }
 .testimonials-container{ 
   display: flex;
@@ -1047,7 +1106,7 @@ main {
   padding: 0 1rem var(--space);
   width: min(1200px, 92%);
   margin: 0 auto;
-  height: 420px; /* altura fija para evitar scroll vertical */
+  height: auto;
   overflow-x: auto;
   overflow-y: hidden;
   scroll-snap-type: x mandatory;
@@ -1055,7 +1114,7 @@ main {
 }
 @media (min-width: 1024px) {
   .testimonials-container {
-    height: 420px;
+    height: auto;
     flex-wrap: nowrap;
     overflow-x: auto;
     overflow-y: hidden;
@@ -1064,9 +1123,9 @@ main {
     flex: 1 1 320px;
     min-width: 320px;
     max-width: 380px;
-    height: 100%;
+    height: auto;
     min-height: 340px;
-    max-height: 420px;
+    max-height: none;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
