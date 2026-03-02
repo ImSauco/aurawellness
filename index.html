@@ -51,12 +51,27 @@
   <div id="contact-modal" class="modal" aria-hidden="true" role="dialog" aria-modal="true">
     <div class="modal-content">
       <button class="close" type="button" aria-label="Cerrar" data-close-modal>×</button>
-      <h2>Preguntar talla</h2>
-      <form action="#" method="POST" data-contact-form data-source="contacto-general">
+      <h2>Contacto</h2>
+      <form action="https://formspree.io/f/xanrbqnr" method="POST" data-contact-form data-source="contacto-general">
         <input type="text" name="nombre" placeholder="Tu nombre" required>
         <input type="email" name="email" placeholder="Tu correo" required>
         <textarea name="mensaje" placeholder="Tu mensaje" required></textarea>
         <input type="hidden" name="_subject" value="Nuevo mensaje desde la web By Aura">
+        <button type="submit">Enviar</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- MODAL: CONTACTO TIENDA -->
+  <div id="contact-modal-shop" class="modal" aria-hidden="true" role="dialog" aria-modal="true">
+    <div class="modal-content">
+      <button class="close" type="button" aria-label="Cerrar" data-close-modal>×</button>
+      <h2>Consulta de tienda</h2>
+      <form action="https://formspree.io/f/xanrbqnr" method="POST" data-contact-form data-source="tienda">
+        <input type="text" name="nombre" placeholder="Tu nombre" required>
+        <input type="email" name="email" placeholder="Tu correo" required>
+        <textarea name="mensaje" placeholder="Indica producto, talla y color" required></textarea>
+        <input type="hidden" name="_subject" value="Consulta tienda – By Aura">
         <button type="submit">Enviar</button>
       </form>
     </div>
@@ -146,7 +161,7 @@
             <div class="modal-content">
               <button class="close" type="button" aria-label="Cerrar" data-close-modal>×</button>
               <h2>Solicita tu presupuesto</h2>
-              <form action="#" method="POST" data-contact-form data-source="presupuesto-empresas">
+              <form action="https://formspree.io/f/xanrbqnr" method="POST" data-contact-form data-source="presupuesto-empresas">
                 <input type="text" name="nombre" placeholder="Tu nombre" required>
                 <input type="email" name="email" placeholder="Tu correo" required>
                 <textarea name="mensaje" placeholder="Tu mensaje" required></textarea>
@@ -248,7 +263,7 @@
           <img id="shop-hero-image" src="img/media/blacktback.jpeg" alt="By Aura Collection portada">
         </div>
         <div class="shop-bottom" id="shop-products">
-          <!-- Productos se cargan desde la API -->
+          <!-- Productos se renderizan desde app.js en modo sin backend -->
         </div>
       </div>
     </section>
@@ -291,8 +306,7 @@
     <nav class="legal">
       <a href="aviso-legal.html">Aviso Legal</a> | 
       <a href="privacidad.html">Política de Privacidad</a> | 
-      <a href="devoluciones.html">Política de Devoluciones</a> | 
-      <a href="admin.html" class="footer-admin"> Panel Admin</a>
+      <a href="devoluciones.html">Política de Devoluciones</a>
     </nav>
   </footer>
 

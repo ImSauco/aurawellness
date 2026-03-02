@@ -23,6 +23,9 @@ window.addEventListener('scroll', () => {
   const body = document.body;
 
   function openModal(modal) {
+    if (modal.parentElement !== body) {
+      body.appendChild(modal);
+    }
     modal.classList.add('open');
     modal.setAttribute('aria-hidden', 'false');
     body.classList.add('modal-open');
@@ -68,61 +71,30 @@ window.addEventListener('scroll', () => {
   });
 })();
 
-// ===== CONTENIDO DINÁMICO (Eventos + Tienda) =====
-const API_BASE = ['localhost', '127.0.0.1'].includes(window.location.hostname)
-  ? 'http://localhost:8000'
-  : 'https://aurawellness.onrender.com';
+// ===== CONTENIDO LOCAL (sin backend activo) =====
+
+const FORMSPREE_ENDPOINT = 'https://formspree.io/f/xanrbqnr';
 
 async function loadWebContent() {
-  try {
-    const response = await fetch(`${API_BASE}/content/public`);
-    if (!response.ok) return;
-    const data = await response.json();
-
-    const eventsTitle = document.getElementById('events-title');
-    const eventsBody = document.getElementById('events-body');
-    const eventsCta = document.getElementById('events-cta');
-    const shopTitle = document.getElementById('shop-title');
-    const shopHero = document.getElementById('shop-hero-image');
-
-    // Dinámico de eventos desactivado temporalmente
-    if (eventsTitle || eventsBody || eventsCta) {
-      // Placeholder para futura activación del backend
-    }
-
-    if (shopTitle && data.shop_title) shopTitle.textContent = data.shop_title;
-    if (shopHero && data.shop_hero_image) shopHero.setAttribute('src', data.shop_hero_image);
-  } catch (error) {
-    console.error(error);
-  }
+  // Placeholder para futura activación del backend
 }
 
 async function loadProducts() {
-  try {
-    const response = await fetch(`${API_BASE}/products/public`);
-    if (!response.ok) return;
-    const products = await response.json();
-    const container = document.getElementById('shop-products');
-    if (!container) return;
+  const container = document.getElementById('shop-products');
+  if (!container) return;
 
-    if (!products.length) {
-      container.innerHTML = '<p>No hay productos disponibles en este momento.</p>';
-      return;
-    }
-
-    container.innerHTML = products.map(product => {
-      const img = product.image_url || 'https://via.placeholder.com/400x300';
-      return `
-        <div class="shop-card">
-          <img src="${img}" alt="${product.name}">
-          <h3>${product.name}</h3>
-          <a class="btn-shop" data-open-modal data-target="contact-modal" data-source="tienda">Preguntar disponibilidad</a>
-        </div>
-      `;
-    }).join('');
-  } catch (error) {
-    console.error(error);
-  }
+  container.innerHTML = `
+    <div class="shop-card">
+      <img src="img/media/blacktfront.jpeg" alt="Camiseta negra By Aura">
+      <h3>Black Aura Tee</h3>
+      <a class="btn-shop" data-open-modal data-target="contact-modal-shop" data-source="tienda">Preguntar disponibilidad</a>
+    </div>
+    <div class="shop-card">
+      <img src="img/media/navytfront.jpeg" alt="Camiseta azul By Aura">
+      <h3>Navy Aura Tee</h3>
+      <a class="btn-shop" data-open-modal data-target="contact-modal-shop" data-source="tienda">Preguntar disponibilidad</a>
+    </div>
+  `;
 }
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -227,7 +199,7 @@ function showContactSuccess(targetElement) {
   }, 2000);
 }
 
-// ===== CONTACTO: Envío al backend =====
+// ===== CONTACTO: Envío a Formspree =====
 function initContactForms() {
   const forms = document.querySelectorAll('[data-contact-form]');
   if (!forms.length) return;
@@ -240,24 +212,30 @@ function initContactForms() {
       const payload = {
         name: (formData.get('nombre') || '').toString().trim(),
         email: (formData.get('email') || '').toString().trim(),
-        message: (formData.get('mensaje') || '').toString().trim(),
-        subject: (formData.get('_subject') || '').toString().trim() || 'Nuevo mensaje desde la web By Aura',
-        source: form.getAttribute('data-source') || window.location.pathname
+        message: (formData.get('mensaje') || '').toString().trim()
       };
+
+      const source = form.getAttribute('data-source') || window.location.pathname;
 
       if (!payload.name || !payload.email || !payload.message) {
         alert('Por favor, completa todos los campos.');
         return;
       }
 
+      formData.set('nombre', payload.name);
+      formData.set('email', payload.email);
+      formData.set('mensaje', payload.message);
+      formData.set('source', source);
+      const endpoint = form.getAttribute('action') || FORMSPREE_ENDPOINT;
+
       const submitBtn = form.querySelector('button[type="submit"]');
       if (submitBtn) submitBtn.disabled = true;
 
       try {
-        const response = await fetch(`${API_BASE}/contact/`, {
+        const response = await fetch(endpoint, {
           method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(payload)
+          headers: { Accept: 'application/json' },
+          body: formData
         });
 
         if (!response.ok) {
