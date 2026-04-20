@@ -996,12 +996,20 @@ main {
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
   padding: clamp(1rem, 2vw, 1.5rem);
   transition: none;
-  border: 1px solid rgba(255, 255, 255, 0.08);
   display: grid;
   gap: clamp(1rem, 2.5vw, 2rem);
 }
 
 .news-card img{
+  width: 100%;
+  height: auto;
+  margin: 0;
+  border-radius: 8px;
+  object-fit: cover;
+  object-position: center;
+}
+
+.news-card video{
   width: 100%;
   height: auto;
   margin: 0;
@@ -1079,21 +1087,38 @@ main {
     align-content: end;
     min-height: clamp(620px, 78vh, 820px);
     padding: clamp(1.5rem, 4vw, 3rem);
-    background-image:
-      linear-gradient(90deg, rgba(1, 1, 50, 0.82), rgba(1, 1, 50, 0.52), rgba(1, 1, 50, 0.18)),
-      url('img/media/kiabievent.jpeg');
-    background-size: cover;
-    background-position: center;
+    isolation: isolate;
   }
 
-  .news-card-featured > img {
-    display: none;
+  .news-card-featured::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, rgba(1, 1, 50, 0.82), rgba(1, 1, 50, 0.52), rgba(1, 1, 50, 0.18));
+    z-index: 1;
+    pointer-events: none;
+  }
+
+  .news-card-featured > img,
+  .news-card-featured > video {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 0;
+    z-index: 0;
+  }
+
+  .news-card-featured > video {
+    filter: grayscale(1) sepia(0.32) brightness(0.9) contrast(1.05);
   }
 
   .news-card-featured .news-texto,
   .news-card-featured .news-boton {
     grid-column: 1;
     max-width: 720px;
+    position: relative;
+    z-index: 2;
   }
 
   .news-card-featured .news-boton {
